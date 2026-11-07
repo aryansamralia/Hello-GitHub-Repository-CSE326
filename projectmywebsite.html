@@ -1,0 +1,1531 @@
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f5ef">
+  <meta name="description" content="A calm, connected workspace for research teams to move from questions to evidence.">
+  <title>Overview · Morrow Research </title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&amp;family=Crimson+Pro:ital,wght@0,400;0,500;0,600;1,400;1,500&amp;display=swap" rel="stylesheet">
+  <style>
+:root {
+      color-scheme: light;
+      --canvas: #f5f5ef;
+      --paper: #fffefa;
+      --paper-soft: #faf9f4;
+      --ink: #1c2b27;
+      --muted: #738079;
+      --quiet: #97a09a;
+      --line: #e5e7df;
+      --line-dark: #d7dcd2;
+      --forest: #183c32;
+      --forest-2: #234d40;
+      --sage: #dfece2;
+      --sage-dark: #35664e;
+      --lime: #d8ee9a;
+      --amber: #d89b5c;
+      --coral: #d17e69;
+      --lavender: #817bb4;
+      --blue: #718ca1;
+      --danger: #a34f44;
+      --serif: "Crimson Pro", Georgia, serif;
+      --sans: "Atkinson Hyperlegible", Arial, sans-serif;
+      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      --ease: cubic-bezier(.2, .75, .25, 1);
+      --motion-fast: 180ms;
+      --motion-medium: 320ms;
+      --motion-slow: 620ms;
+      --sidebar-width: 248px;
+    }
+    * { box-sizing: border-box; }
+    html { min-width: 320px; background: var(--canvas); scroll-behavior: smooth; }
+    body { margin: 0; min-width: 320px; background: var(--canvas); color: var(--ink); font-family: var(--sans); font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    button, input, select, textarea { font: inherit; }
+    button { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 3px solid #8aa66d; outline-offset: 3px; }
+    [hidden] { display: none !important; }
+    .sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
+    .icon { width: 18px; height: 18px; flex: 0 0 auto; display: block; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .app-shell { min-height: 100vh; }
+    .sidebar {
+      position: fixed; z-index: 30; inset: 0 auto 0 0; width: var(--sidebar-width); display: flex; flex-direction: column;
+      padding: 25px 15px 17px; background: var(--forest); color: #e8efe9; border-right: 1px solid rgba(255,255,255,.08);
+    }
+    .brand { display: flex; align-items: center; gap: 11px; padding: 0 11px; color: #f4f5ef; text-decoration: none; }
+    .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border: 1px solid rgba(216,238,154,.6); border-radius: 11px 11px 11px 4px; color: var(--lime); transform: rotate(-5deg); }
+    .brand-mark .icon { width: 19px; height: 19px; transform: rotate(5deg); }
+    .brand-name { font-size: 15px; font-weight: 700; letter-spacing: -.025em; }
+    .brand-sub { display: block; margin-top: 1px; color: #98b0a3; font: 9px/1.3 var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+    .workspace-switch {
+      width: 100%; min-height: 58px; display: flex; align-items: center; gap: 10px; margin: 31px 0 25px; padding: 9px 10px;
+      border: 1px solid rgba(255,255,255,.12); border-radius: 12px; background: rgba(255,255,255,.055); color: inherit; text-align: left; cursor: pointer;
+      transition: background var(--motion-fast) var(--ease), border-color var(--motion-fast) var(--ease);
+    }
+    .workspace-switch:hover { background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.22); }
+    .workspace-mark { width: 35px; height: 35px; display: grid; place-items: center; border-radius: 10px; background: #d9e9d7; color: var(--forest); font-family: var(--serif); font-size: 20px; }
+    .workspace-copy { min-width: 0; flex: 1; }
+    .workspace-copy strong { display: block; overflow: hidden; font-size: 12px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; }
+    .workspace-copy span { display: block; margin-top: 2px; color: #9bb0a4; font-size: 10px; }
+    .workspace-switch .icon { width: 15px; height: 15px; color: #adc0b5; }
+    .nav-label { margin: 0 10px 9px; color: #87a095; font: 9px/1.4 var(--mono); letter-spacing: .13em; text-transform: uppercase; }
+    .primary-nav { display: grid; gap: 4px; }
+    .nav-item { 
+      position: relative; min-height: 44px; display: flex; align-items: center; gap: 12px; padding: 0 11px; border: 1px solid transparent; border-radius: 10px;
+      background: transparent; color: #b4c4bb; text-align: left; cursor: pointer; transition: color var(--motion-fast), background var(--motion-fast), transform var(--motion-fast);
+    }
+    .nav-item:hover { color: #fff; background: rgba(255,255,255,.07); transform: translateX(2px); }
+    .nav-item[aria-current="page"] { background: rgba(232,240,232,.12); color: #fbfcf7; }
+    .nav-item[aria-current="page"]::before { position: absolute; top: 10px; bottom: 10px; left: -1px; width: 3px; border-radius: 3px; background: var(--lime); content: ""; }
+    .nav-item .icon { width: 17px; height: 17px; color: #9db4a7; }
+    .nav-item[aria-current="page"] .icon { color: var(--lime); }
+    .nav-item span:nth-child(2) { flex: 1; }
+    .nav-count { min-width: 21px; padding: 2px 6px; border-radius: 99px; background: rgba(255,255,255,.09); color: #b8c9bf; font: 9px var(--mono); text-align: center; }
+    .sidebar-spacer { flex: 1; min-height: 25px; }
+    .sidebar-note { margin: 0 5px 17px; padding: 13px; border: 1px solid rgba(255,255,255,.11); border-radius: 12px; background: rgba(255,255,255,.045); }
+    .sidebar-note-top { display: flex; align-items: center; justify-content: space-between; color: #d8e5d8; font-size: 10px; }
+    .sidebar-note-top .icon { width: 14px; height: 14px; color: var(--lime); }
+    .storage-track { height: 4px; margin: 10px 0 7px; border-radius: 10px; background: rgba(255,255,255,.14); overflow: hidden; }
+    .storage-track span { display: block; width: 36%; height: 100%; border-radius: inherit; background: var(--lime); }
+    .sidebar-note small { color: #93aa9d; font-size: 9px; }
+    .profile-button { width: 100%; display: flex; align-items: center; gap: 10px; padding: 11px 7px 3px; border: 0; border-top: 1px solid rgba(255,255,255,.12); background: transparent; color: inherit; text-align: left; cursor: pointer; }
+    .avatar { width: 34px; height: 34px; flex: 0 0 auto; display: grid; place-items: center; border: 2px solid rgba(255,255,255,.82); border-radius: 50%; background: #d5c4b1; color: #33463b; font-size: 10px; font-weight: 700; }
+    .avatar.small { width: 28px; height: 28px; border-width: 1.5px; font-size: 8px; }
+    .avatar.xsmall { width: 24px; height: 24px; border-width: 1px; font-size: 7px; }
+    .avatar.a2 { background: #d6dced; color: #444968; }
+    .avatar.a3 { background: #e8c8b8; color: #754d38; }
+    .avatar.a4 { background: #cbdcc7; color: #375642; }
+    .avatar.a5 { background: #e7d7a9; color: #625126; }
+    .profile-meta { min-width: 0; flex: 1; }
+    .profile-meta strong { display: block; font-size: 11px; }
+    .profile-meta span { display: block; color: #99aea2; font-size: 9px; }
+    .profile-button > .icon { width: 15px; color: #92a99c; }
+    .main-shell { min-height: 100vh; margin-left: var(--sidebar-width); }
+    .topbar {
+      position: sticky; z-index: 20; top: 0; height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 0 38px;
+      border-bottom: 1px solid rgba(28,43,39,.08); background: rgba(245,245,239,.91); backdrop-filter: blur(18px);
+    }
+    .topbar-left, .topbar-actions { display: flex; align-items: center; gap: 13px; }
+    .breadcrumb { color: var(--muted); font-size: 12px; }
+    .breadcrumb strong { color: var(--ink); font-weight: 700; }
+    .topbar-actions { gap: 10px; }
+    .icon-button {
+      position: relative; width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid transparent; border-radius: 11px;
+      background: transparent; color: #6e7a72; cursor: pointer; transition: background var(--motion-fast), border-color var(--motion-fast), color var(--motion-fast), transform var(--motion-fast);
+    }
+    .icon-button:hover { border-color: var(--line); background: var(--paper); color: var(--forest); transform: translateY(-1px); }
+    .icon-button .icon { width: 18px; height: 18px; }
+    .notification-dot { position: absolute; top: 7px; right: 7px; width: 7px; height: 7px; border: 1px solid var(--canvas); border-radius: 50%; background: var(--coral); }
+    .search-trigger { min-width: 207px; height: 38px; display: flex; align-items: center; gap: 9px; padding: 0 10px; border: 1px solid var(--line); border-radius: 11px; background: rgba(255,254,250,.7); color: #89938d; text-align: left; cursor: pointer; transition: border-color var(--motion-fast), background var(--motion-fast); }
+    .search-trigger:hover { border-color: var(--line-dark); background: var(--paper); }
+    .search-trigger .icon { width: 16px; height: 16px; }
+    .search-trigger span { flex: 1; font-size: 11px; }
+    .key-hint { padding: 2px 5px; border: 1px solid var(--line); border-radius: 5px; background: #fff; color: #8a948e; font: 9px var(--mono); }
+    .menu-toggle { display: none; }
+    .button {
+      min-height: 39px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 0 14px; border: 1px solid transparent; border-radius: 10px;
+      font-size: 11px; font-weight: 700; text-decoration: none; cursor: pointer; transition: transform var(--motion-fast) var(--ease), background var(--motion-fast), border-color var(--motion-fast), box-shadow var(--motion-fast);
+    }
+    .button:hover { transform: translateY(-1px); }
+    .button:active { transform: translateY(0) scale(.98); }
+    .button .icon { width: 15px; height: 15px; }
+    .button-primary { background: var(--forest); color: #fff; box-shadow: 0 5px 12px rgba(24,60,50,.13); }
+    .button-primary:hover { background: var(--forest-2); box-shadow: 0 8px 17px rgba(24,60,50,.17); }
+    .button-secondary { border-color: var(--line-dark); background: var(--paper); color: var(--ink); }
+    .button-secondary:hover { border-color: #aebbb1; background: #fff; }
+    .button-light { border-color: rgba(255,255,255,.2); background: rgba(255,255,255,.09); color: #f5f7f2; }
+    .button-light:hover { background: rgba(255,255,255,.15); }
+    .button-quiet { border-color: transparent; background: transparent; color: var(--muted); }
+    .button-quiet:hover { background: var(--paper-soft); color: var(--ink); }
+    .view-wrap { width: min(1500px, 100%); margin: 0 auto; padding: 31px 38px 54px; }
+    .view-root { animation: page-in var(--motion-medium) var(--ease) both; }
+    .page-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin: 0 0 24px; }
+    .page-heading h1 { margin: 0; font: 500 clamp(34px,4vw,47px)/.98 var(--serif); letter-spacing: -.035em; }
+    .page-heading h1 em { color: var(--sage-dark); font-style: italic; }
+    .page-heading p { max-width: 640px; margin: 10px 0 0; color: var(--muted); font-size: 12px; }
+    .eyebrow { display: flex; align-items: center; gap: 8px; margin-bottom: 9px; color: var(--sage-dark); font: 9px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    .eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: #7ba485; box-shadow: 0 0 0 4px rgba(123,164,133,.12); animation: pulse 2.8s ease-in-out infinite; }
+    .date-pill, .status-pill, .tag-pill, .priority-pill { min-height: 25px; display: inline-flex; align-items: center; gap: 6px; padding: 0 9px; border: 1px solid var(--line); border-radius: 99px; background: var(--paper); color: #6a766e; font-size: 9px; white-space: nowrap; }
+    .date-pill .icon { width: 13px; height: 13px; }
+    .status-pill::before { width: 6px; height: 6px; border-radius: 50%; background: #829b79; content: ""; }
+    .status-pill.running::before, .status-pill.in-progress::before { background: var(--amber); }
+    .status-pill.complete::before { background: #5f9a76; }
+    .status-pill.planning::before { background: #a3a9a1; }
+    .tag-pill { min-height: 23px; padding: 0 8px; border-color: transparent; background: #edf1e9; color: #607364; font-size: 9px; }
+    .priority-pill.high { border-color: #f0d7cd; background: #fff4ef; color: #a65d48; }
+    .priority-pill.medium { border-color: #eadfc7; background: #fbf6e9; color: #927342; }
+    .priority-pill.low { background: #edf3ec; color: #64816d; }
+    .section-title { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0 0 13px; }
+    .section-title h2 { margin: 0; font: 500 24px/1 var(--serif); letter-spacing: -.025em; }
+    .section-title p { margin: 4px 0 0; color: var(--muted); font-size: 10px; }
+    .text-link { display: inline-flex; align-items: center; gap: 6px; border: 0; background: transparent; color: var(--sage-dark); font-size: 10px; font-weight: 700; cursor: pointer; }
+    .text-link:hover { color: var(--forest); }
+    .text-link .icon { width: 13px; height: 13px; }
+    .card { border: 1px solid var(--line); border-radius: 15px; background: var(--paper); box-shadow: 0 3px 14px rgba(27,43,37,.025); }
+    .card-hover { transition: border-color var(--motion-fast), transform var(--motion-fast) var(--ease), box-shadow var(--motion-fast); }
+    .card-hover:hover { border-color: #ccd7cd; transform: translateY(-2px); box-shadow: 0 10px 24px rgba(27,43,37,.07); }
+    .stagger-in { animation: rise-in 560ms var(--ease) both; animation-delay: calc(var(--index, 0) * 45ms); }
+    .empty-state { display: grid; place-items: center; padding: 46px 25px; color: var(--muted); text-align: center; }
+    .empty-state .empty-icon { width: 45px; height: 45px; display: grid; place-items: center; margin-bottom: 12px; border: 1px solid var(--line); border-radius: 15px; background: var(--paper-soft); color: var(--sage-dark); }
+    .empty-state h3 { margin: 0 0 4px; color: var(--ink); font: 500 23px var(--serif); }
+    .empty-state p { max-width: 330px; margin: 0 0 13px; font-size: 11px; }
+
+    .welcome-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 20px; }
+    .welcome-row .page-heading { margin: 0; }
+    .workspace-label { display: flex; align-items: center; gap: 7px; color: var(--muted); font-size: 10px; }
+    .workspace-label .icon { width: 14px; height: 14px; color: var(--sage-dark); }
+    .hero-project {
+      position: relative; isolation: isolate; display: grid; grid-template-columns: minmax(0,1fr) 220px; gap: 20px; min-height: 222px; overflow: hidden;
+      padding: 25px 27px; border: 1px solid rgba(24,60,50,.15); border-radius: 18px; background: linear-gradient(118deg,#183c32 0%,#224b3f 62%,#2f5c47 100%); color: #f5f6ef;
+      box-shadow: 0 14px 30px rgba(24,60,50,.12);
+    }
+    .hero-project::before { position: absolute; z-index: -1; top: -176px; right: 100px; width: 390px; height: 390px; border: 1px solid rgba(216,238,154,.11); border-radius: 50%; box-shadow: 0 0 0 32px rgba(216,238,154,.026),0 0 0 64px rgba(216,238,154,.02); content: ""; transform: scaleY(.78) rotate(-16deg); animation: orbit 42s linear infinite; }
+    .hero-project::after { position: absolute; z-index: -1; top: -100px; right: -34px; width: 390px; height: 300px; background: radial-gradient(ellipse,rgba(216,238,154,.17),transparent 68%); content: ""; }
+    .hero-project-copy { position: relative; z-index: 1; }
+    .hero-project .eyebrow { margin: 0 0 12px; color: #d5e5c8; }
+    .hero-project h2 { max-width: 650px; margin: 0; font: 500 clamp(29px,3vw,39px)/1.04 var(--serif); letter-spacing: -.025em; }
+    .hero-project-copy > p { max-width: 560px; margin: 10px 0 17px; color: #c5d4ca; font-size: 11px; line-height: 1.6; }
+    .hero-project-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .hero-project-meta .tag-pill { border: 1px solid rgba(255,255,255,.15); background: rgba(255,255,255,.09); color: #e3ede3; }
+    .hero-project-side { display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; padding: 5px 2px 2px; text-align: right; }
+    .progress-ring { position: relative; width: 82px; height: 82px; display: grid; place-items: center; border-radius: 50%; background: conic-gradient(var(--lime) 0 var(--progress,68%),rgba(255,255,255,.14) var(--progress,68%) 100%); animation: ring-in 800ms 180ms var(--ease) both; }
+    .progress-ring::before { position: absolute; inset: 6px; border-radius: 50%; background: #21483b; content: ""; }
+    .progress-ring strong { position: relative; z-index: 1; color: #fff; font: 500 22px var(--serif); }
+    .progress-ring span { position: relative; z-index: 1; margin-left: -19px; margin-top: 25px; color: #c8d7c8; font-size: 8px; }
+    .progress-caption { margin-top: 5px; color: #b6cabe; font-size: 9px; }
+    .hero-project-actions { display: flex; gap: 8px; }
+    .hero-project-actions .button { min-height: 35px; }
+    .metrics-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 11px; margin: 15px 0 27px; }
+    .metric-card { position: relative; min-height: 108px; overflow: hidden; padding: 15px 16px; }
+    .metric-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: var(--muted); font-size: 10px; }
+    .metric-icon { width: 30px; height: 30px; display: grid; place-items: center; border-radius: 10px; background: #eff3ed; color: var(--sage-dark); }
+    .metric-icon .icon { width: 16px; height: 16px; }
+    .metric-value-row { display: flex; align-items: baseline; gap: 9px; margin-top: 8px; }
+    .metric-value { color: var(--ink); font: 500 31px/.95 var(--serif); }
+    .metric-trend { color: #618269; font-size: 9px; }
+    .metric-foot { margin-top: 6px; color: #9aa39d; font-size: 9px; }
+    .dashboard-grid { display: grid; grid-template-columns: minmax(0,1.45fr) minmax(275px,.85fr); gap: 18px; }
+    .dashboard-column { min-width: 0; display: grid; align-content: start; gap: 22px; }
+    .panel { padding: 19px 20px; }
+    .momentum-panel { min-height: 242px; }
+    .chart-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+    .chart-total { color: var(--muted); font-size: 9px; }
+    .chart-total strong { display: block; color: var(--ink); font: 500 25px/1 var(--serif); }
+    .chart-area { height: 121px; display: flex; align-items: stretch; gap: 13px; margin-top: 17px; padding: 0 4px; border-bottom: 1px solid var(--line); background: repeating-linear-gradient(to bottom,transparent 0,transparent 29px,#edf0e9 30px); }
+    .chart-day { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: 6px; min-width: 0; }
+    .chart-bars { width: min(30px,100%); flex: 1; display: flex; align-items: flex-end; justify-content: center; gap: 3px; }
+    .chart-bar { width: 8px; height: var(--height,50%); border-radius: 5px 5px 2px 2px; background: #aac2aa; transform-origin: bottom; animation: bar-up 700ms var(--ease) both; animation-delay: calc(var(--index,0) * 55ms); }
+    .chart-bar.secondary { background: #d5dfcf; }
+    .chart-day label { padding-bottom: 7px; color: #8d9891; font-size: 8px; }
+    .chart-legend { display: flex; gap: 13px; margin-top: 12px; color: #8a958e; font-size: 9px; }
+    .legend-dot { width: 6px; height: 6px; display: inline-block; margin-right: 5px; border-radius: 50%; background: #aac2aa; }
+    .legend-dot.light { background: #d5dfcf; }
+    .milestone-list { display: grid; }
+    .milestone { display: grid; grid-template-columns: 43px 1fr auto; align-items: center; gap: 10px; padding: 12px 0; border-bottom: 1px solid #eef0eb; }
+    .milestone:last-child { border-bottom: 0; }
+    .milestone-date { width: 38px; height: 42px; display: grid; align-content: center; justify-items: center; border: 1px solid var(--line); border-radius: 9px; background: var(--paper-soft); }
+    .milestone-date strong { font: 500 17px/.95 var(--serif); }
+    .milestone-date span { margin-top: 3px; color: #87918b; font: 8px var(--mono); text-transform: uppercase; }
+    .milestone-copy strong { display: block; font-size: 10px; font-weight: 700; }
+    .milestone-copy span { display: block; margin-top: 3px; color: var(--muted); font-size: 9px; }
+    .milestone .icon { width: 14px; height: 14px; color: #a0aaa3; }
+    .activity-list { display: grid; }
+    .activity-item { display: grid; grid-template-columns: 30px 1fr; gap: 9px; padding: 12px 0; border-bottom: 1px solid #eef0eb; }
+    .activity-item:last-child { border-bottom: 0; }
+    .activity-mark { width: 28px; height: 28px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 9px; background: #f5f7f1; color: var(--sage-dark); }
+    .activity-mark .icon { width: 14px; height: 14px; }
+    .activity-copy { min-width: 0; }
+    .activity-copy p { margin: 0; color: #536158; font-size: 10px; line-height: 1.45; }
+    .activity-copy strong { color: var(--ink); }
+    .activity-copy time { display: block; margin-top: 4px; color: #9aa39d; font-size: 8px; }
+    .project-list { display: grid; gap: 9px; }
+    .project-row { display: flex; align-items: center; gap: 12px; padding: 13px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); cursor: pointer; }
+    .project-row:hover { border-color: #bfcfc0; background: #fff; }
+    .project-mark { width: 37px; height: 37px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 11px; background: var(--project-tone,#e7eee4); color: var(--project-ink,#45674f); font: 500 19px var(--serif); }
+    .project-row-main { min-width: 0; flex: 1; }
+    .project-row-main strong { display: block; overflow: hidden; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+    .project-row-main span { display: block; margin-top: 4px; color: var(--muted); font-size: 9px; }
+    .mini-progress { width: 68px; height: 5px; flex: 0 0 auto; border-radius: 9px; background: #edf0e9; overflow: hidden; }
+    .mini-progress span { display: block; width: var(--progress,50%); height: 100%; border-radius: inherit; background: #82a58b; transition: width 500ms var(--ease); }
+    .team-strip { display: flex; align-items: center; gap: 7px; }
+    .team-strip .avatar { margin-left: -8px; }
+    .team-strip .avatar:first-child { margin-left: 0; }
+
+    .toolbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 20px 0 14px; }
+    .toolbar-left, .toolbar-right { display: flex; align-items: center; gap: 8px; }
+    .filter-tabs { max-width: 100%; display: inline-flex; align-items: center; gap: 3px; padding: 3px; border: 1px solid var(--line); border-radius: 10px; background: #eeefe9; overflow-x: auto; }
+    .filter-tab { min-height: 36px; flex: 0 0 auto; padding: 0 10px; border: 0; border-radius: 7px; background: transparent; color: #77827b; font-size: 9px; cursor: pointer; transition: background var(--motion-fast), color var(--motion-fast), box-shadow var(--motion-fast); }
+    .filter-tab[aria-pressed="true"] { background: var(--paper); color: var(--ink); box-shadow: 0 1px 4px rgba(25,43,36,.09); }
+    .input-search { width: min(270px,40vw); height: 36px; display: flex; align-items: center; gap: 8px; padding: 0 10px; border: 1px solid var(--line); border-radius: 9px; background: var(--paper); color: #839087; }
+    .input-search .icon { width: 15px; height: 15px; }
+    .input-search input { width: 100%; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 10px; }
+    .input-search input::placeholder { color: #9aa39d; }
+    .table-shell { overflow: hidden; }
+    .table-scroll { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th { padding: 11px 14px; border-bottom: 1px solid var(--line); background: #fafaf6; color: #8b968f; font: 8px var(--mono); letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+    td { padding: 13px 14px; border-bottom: 1px solid #eef0eb; color: #657169; font-size: 10px; vertical-align: middle; }
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr { transition: background var(--motion-fast); }
+    tbody tr:hover { background: #fbfcf8; }
+    .record-title { max-width: 360px; color: var(--ink); font-size: 10px; font-weight: 700; line-height: 1.4; }
+    .record-sub { margin-top: 4px; color: #8a958e; font-size: 9px; }
+    .source-cell { color: #68766c; }
+    .saved-button { width: 36px; height: 36px; display: grid; place-items: center; border: 1px solid transparent; border-radius: 8px; background: transparent; color: #a0aaa3; cursor: pointer; }
+    .saved-button:hover { background: #f6f7f1; color: var(--amber); }
+    .saved-button[aria-pressed="true"] { color: #c88a43; }
+    .saved-button .icon { width: 15px; height: 15px; }
+    .saved-button[aria-pressed="true"] .icon { fill: rgba(200,138,67,.2); }
+    .task-columns { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; align-items: start; }
+    .task-column { min-width: 0; padding: 12px; border: 1px solid var(--line); border-radius: 14px; background: #f0f1eb; }
+    .task-column-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 2px 2px 11px; }
+    .task-column-head strong { display: inline-flex; align-items: center; gap: 7px; font-size: 10px; }
+    .column-dot { width: 7px; height: 7px; border-radius: 50%; background: #8a9a89; }
+    .column-dot.progress { background: var(--amber); }
+    .column-dot.done { background: #71a180; }
+    .column-count { min-width: 20px; padding: 2px 6px; border-radius: 20px; background: rgba(35,56,46,.08); color: #758078; font: 9px var(--mono); text-align: center; }
+    .task-card { margin: 0 0 8px; padding: 12px; border: 1px solid #e5e8e0; border-radius: 11px; background: var(--paper); transition: border-color var(--motion-fast), transform var(--motion-fast), box-shadow var(--motion-fast); }
+    .task-card:hover { border-color: #cad7cb; transform: translateY(-2px); box-shadow: 0 6px 14px rgba(26,45,37,.06); }
+    .task-card:last-child { margin-bottom: 0; }
+    .task-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+    .task-check { width: 24px; height: 24px; flex: 0 0 auto; display: grid; place-items: center; border: 1px solid #cfd8cf; border-radius: 7px; background: white; color: #fff; cursor: pointer; }
+    .task-check:hover { border-color: #7ca188; }
+    .task-check[aria-pressed="true"] { border-color: #528568; background: #528568; }
+    .task-check .icon { width: 12px; height: 12px; opacity: 0; }
+    .task-check[aria-pressed="true"] .icon { opacity: 1; }
+    .task-title { flex: 1; color: #2e4038; font-size: 10px; font-weight: 700; line-height: 1.4; }
+    .task-title.done { color: #8a958d; text-decoration: line-through; }
+    .task-card > p { margin: 9px 0 11px 27px; color: #8a958e; font-size: 9px; line-height: 1.45; }
+    .task-meta { display: flex; align-items: center; justify-content: space-between; gap: 7px; margin-left: 27px; }
+    .task-due { display: inline-flex; align-items: center; gap: 4px; color: #89948d; font-size: 8px; }
+    .task-due .icon { width: 12px; height: 12px; }
+    .task-owner { display: flex; align-items: center; gap: 5px; color: #7c8980; font-size: 8px; }
+    .experiment-grid, .finding-grid, .project-grid, .team-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 13px; }
+    .experiment-card, .finding-card, .project-card, .member-card { min-width: 0; padding: 17px; }
+    .experiment-top, .finding-top, .project-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; }
+    .card-icon { width: 37px; height: 37px; display: grid; place-items: center; border-radius: 11px; background: #f0f3ed; color: var(--sage-dark); }
+    .card-icon .icon { width: 17px; height: 17px; }
+    .experiment-card h3, .finding-card h3, .project-card h3 { margin: 14px 0 6px; color: var(--ink); font: 500 23px/1.06 var(--serif); }
+    .experiment-card p, .finding-card p, .project-card p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.55; }
+    .experiment-footer, .project-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 17px; padding-top: 13px; border-top: 1px solid #edf0ea; }
+    .experiment-footer span, .project-card-footer span { color: #89948d; font-size: 9px; }
+    .experiment-footer strong { color: #526a58; font-size: 9px; }
+    .protocol-preview { margin-top: 13px; padding: 10px; border: 1px solid #edf0ea; border-radius: 9px; background: #fbfbf7; color: #758179; font-size: 9px; line-height: 1.5; }
+    .finding-card { position: relative; overflow: hidden; }
+    .finding-card::before { position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--finding-accent,#87a68d); content: ""; }
+    .finding-quote { margin: 15px 0 0; padding: 12px; border-radius: 10px; background: #f7f8f3; color: #536158; font: italic 18px/1.25 var(--serif); }
+    .finding-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 13px; color: #89948d; font-size: 8px; }
+    .finding-author { display: inline-flex; align-items: center; gap: 6px; }
+    .project-card { cursor: pointer; }
+    .project-card.selected { border-color: #9db9a0; box-shadow: 0 0 0 2px rgba(124,161,130,.14); }
+    .project-card h3 { max-width: 250px; margin-top: 13px; }
+    .project-card .project-focus { min-height: 32px; }
+    .project-phase { display: inline-flex; align-items: center; gap: 6px; margin-top: 13px; color: #718077; font-size: 9px; }
+    .project-phase::before { width: 6px; height: 6px; border-radius: 50%; background: #8ca989; content: ""; }
+    .project-progress-row { display: flex; align-items: center; gap: 8px; margin-top: 14px; }
+    .project-progress-row .mini-progress { flex: 1; width: auto; }
+    .project-progress-row strong { color: #6a786f; font: 9px var(--mono); }
+    .project-detail { display: grid; grid-template-columns: minmax(0,1.15fr) minmax(250px,.85fr); gap: 14px; margin-top: 17px; padding: 19px; }
+    .detail-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 13px 0; }
+    .detail-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 9px; align-self: stretch; }
+    .detail-stat { padding: 12px; border: 1px solid var(--line); border-radius: 11px; background: #fbfbf7; }
+    .detail-stat strong { display: block; font: 500 25px/1 var(--serif); }
+    .detail-stat span { display: block; margin-top: 5px; color: var(--muted); font-size: 8px; }
+    .timeline { position: relative; display: grid; gap: 0; padding-left: 20px; }
+    .timeline::before { position: absolute; top: 8px; bottom: 16px; left: 6px; width: 1px; background: #dfe5dc; content: ""; }
+    .timeline-item { position: relative; display: grid; grid-template-columns: 76px 19px 1fr; align-items: start; gap: 11px; padding: 10px 0 18px; }
+    .timeline-date { padding-top: 3px; color: #89948d; font: 8px var(--mono); text-align: right; }
+    .timeline-node { position: relative; z-index: 1; width: 13px; height: 13px; display: grid; place-items: center; border: 1px solid #b9ccba; border-radius: 50%; background: var(--canvas); color: var(--sage-dark); }
+    .timeline-node .icon { width: 8px; height: 8px; stroke-width: 2; }
+    .timeline-copy { padding: 13px 15px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+    .timeline-copy strong { display: block; color: var(--ink); font-size: 10px; }
+    .timeline-copy p { margin: 4px 0 0; color: #79857d; font-size: 9px; line-height: 1.5; }
+    .timeline-copy .timeline-by { display: flex; align-items: center; gap: 6px; margin-top: 9px; color: #929c95; font-size: 8px; }
+    .member-card { text-align: center; }
+    .member-card .avatar { width: 53px; height: 53px; margin: 1px auto 10px; border-width: 2px; font-size: 13px; }
+    .member-card h3 { margin: 0; color: var(--ink); font: 500 23px/1.1 var(--serif); }
+    .member-card .member-role { margin-top: 4px; color: var(--muted); font-size: 9px; }
+    .member-card .member-email { display: block; margin-top: 8px; color: #95a099; font-size: 8px; text-decoration: none; }
+    .member-load { display: flex; align-items: center; justify-content: space-between; margin-top: 15px; padding-top: 12px; border-top: 1px solid #edf0ea; color: #8a958e; font-size: 8px; }
+    .member-load strong { color: #53665a; font-weight: 700; }
+    .team-header { display: flex; align-items: center; justify-content: space-between; margin: 21px 0 11px; }
+    .team-header h2 { margin: 0; font: 500 25px var(--serif); }
+    .filter-note { margin: -3px 0 13px; color: #89948d; font-size: 9px; }
+
+    .popover-root { position: fixed; z-index: 50; inset: 0; pointer-events: none; }
+    .popover-panel { position: absolute; top: 58px; right: 34px; width: 270px; padding: 8px; border: 1px solid var(--line); border-radius: 14px; background: var(--paper); box-shadow: 0 18px 45px rgba(25,44,36,.15); pointer-events: auto; animation: pop-in 180ms var(--ease) both; }
+    .popover-heading { padding: 9px 10px 7px; color: #89948d; font: 8px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    .popover-item { width: 100%; display: flex; align-items: center; gap: 10px; padding: 10px; border: 0; border-radius: 9px; background: transparent; color: var(--ink); text-align: left; cursor: pointer; }
+    .popover-item:hover { background: #f4f6f0; }
+    .popover-item .icon { width: 16px; height: 16px; color: var(--sage-dark); }
+    .popover-item span { flex: 1; font-size: 10px; }
+    .popover-item small { color: #99a39c; font-size: 8px; }
+    .popover-sep { height: 1px; margin: 5px 4px; background: var(--line); }
+    .modal-root { position: fixed; z-index: 80; inset: 0; display: grid; place-items: center; padding: 20px; background: rgba(16,34,28,.48); backdrop-filter: blur(4px); animation: fade-in 150ms ease both; }
+    .modal-card { width: min(530px,100%); max-height: min(92vh,760px); overflow: auto; border: 1px solid rgba(255,255,255,.35); border-radius: 18px; background: var(--paper); box-shadow: 0 28px 90px rgba(12,29,22,.27); animation: modal-in 240ms var(--ease) both; }
+    .modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 21px 22px 16px; border-bottom: 1px solid var(--line); }
+    .modal-head h2 { margin: 0; font: 500 29px/1 var(--serif); }
+    .modal-head p { margin: 6px 0 0; color: var(--muted); font-size: 9px; }
+    .modal-body { padding: 18px 22px 22px; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
+    .field { display: grid; gap: 6px; }
+    .field.full { grid-column: 1/-1; }
+    .field label { color: #59665e; font-size: 9px; font-weight: 700; }
+    .field input, .field select, .field textarea { width: 100%; min-height: 40px; padding: 9px 11px; border: 1px solid #dfe4db; border-radius: 9px; background: #fff; color: var(--ink); font-size: 10px; transition: border-color var(--motion-fast), box-shadow var(--motion-fast); }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: #88a88b; box-shadow: 0 0 0 3px rgba(136,168,139,.13); outline: 0; }
+    .field textarea { min-height: 89px; resize: vertical; line-height: 1.5; }
+    .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 18px; padding-top: 14px; border-top: 1px solid #eef0eb; }
+    .modal-hint { display: flex; align-items: flex-start; gap: 8px; margin-top: 13px; padding: 10px; border-radius: 9px; background: #f3f6ef; color: #77847a; font-size: 8px; line-height: 1.45; }
+    .modal-hint .icon { width: 14px; height: 14px; color: #709278; }
+    .search-modal .modal-card { width: min(600px,100%); }
+    .search-large { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
+    .search-large .icon { color: #829087; }
+    .search-large input { width: 100%; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 13px; }
+    .search-results { max-height: 390px; overflow: auto; padding: 7px; }
+    .search-result { width: 100%; display: flex; align-items: center; gap: 10px; padding: 10px; border: 0; border-radius: 9px; background: transparent; text-align: left; cursor: pointer; }
+    .search-result:hover { background: #f2f5ef; }
+    .search-result .card-icon { width: 31px; height: 31px; flex: 0 0 auto; }
+    .search-result-copy { min-width: 0; flex: 1; }
+    .search-result-copy strong { display: block; overflow: hidden; color: var(--ink); font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+    .search-result-copy span { display: block; margin-top: 3px; color: #8c9790; font-size: 8px; }
+    .search-empty { padding: 25px 12px; color: #8b968f; font-size: 10px; text-align: center; }
+    .toast-region { position: fixed; z-index: 100; right: 20px; bottom: 20px; display: grid; gap: 8px; pointer-events: none; }
+    .toast { min-width: 240px; display: flex; align-items: center; gap: 9px; padding: 12px 14px; border: 1px solid #dce7dc; border-radius: 11px; background: #fffefa; color: #385746; box-shadow: 0 12px 30px rgba(26,44,36,.13); font-size: 10px; animation: toast-in 300ms var(--ease) both; }
+    .toast .icon { width: 16px; height: 16px; color: #6f9a7b; }
+    .scrim { position: fixed; z-index: 25; inset: 0; display: none; background: rgba(14,32,26,.38); backdrop-filter: blur(2px); }
+    @keyframes page-in { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes rise-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes modal-in { from { opacity: 0; transform: translateY(9px) scale(.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes pop-in { from { opacity: 0; transform: translateY(-5px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes toast-in { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse { 0%,100% { box-shadow: 0 0 0 4px rgba(123,164,133,.12); } 50% { box-shadow: 0 0 0 7px rgba(123,164,133,.04); } }
+    @keyframes orbit { to { transform: scaleY(.78) rotate(344deg); } }
+    @keyframes ring-in { from { transform: scale(.9); opacity: .5; } to { transform: scale(1); opacity: 1; } }
+    @keyframes bar-up { from { transform: scaleY(.05); opacity: .5; } to { transform: scaleY(1); opacity: 1; } }
+    @media (max-width: 1180px) {
+      :root { --sidebar-width: 226px; }
+      .topbar { padding-inline: 25px; }
+      .view-wrap { padding-inline: 25px; }
+      .dashboard-grid { grid-template-columns: minmax(0,1.25fr) minmax(255px,.85fr); }
+      .experiment-grid, .finding-grid, .project-grid, .team-grid { grid-template-columns: repeat(2,minmax(0,1fr)); }
+    }
+    @media (max-width: 900px) {
+      :root { --sidebar-width: 220px; }
+      .sidebar { transform: translateX(-102%); transition: transform 300ms var(--ease); box-shadow: 12px 0 40px rgba(11,32,25,.12); }
+      .sidebar.is-open { transform: translateX(0); }
+      .scrim.is-visible { display: block; }
+      .main-shell { margin-left: 0; }
+      .menu-toggle { display: grid; }
+      .topbar { height: 62px; padding-inline: 20px; }
+      .view-wrap { padding: 26px 20px 45px; }
+      .dashboard-grid { grid-template-columns: 1fr; }
+      .dashboard-column.secondary { grid-template-columns: repeat(2,minmax(0,1fr)); align-items: start; }
+      .hero-project { grid-template-columns: minmax(0,1fr) 155px; }
+    }
+    @media (max-width: 640px) {
+      .topbar { gap: 8px; padding-inline: 13px; }
+      .topbar-left { gap: 8px; }
+      .breadcrumb { font-size: 10px; }
+      .search-trigger { min-width: 38px; width: 38px; justify-content: center; padding: 0; }
+      .search-trigger span, .search-trigger .key-hint { display: none; }
+      .topbar-actions { gap: 3px; }
+      .topbar-actions > .icon-button:first-of-type { display: none; }
+      .topbar .button-primary { min-height: 36px; padding-inline: 10px; font-size: 10px; }
+      .view-wrap { padding: 21px 13px 35px; }
+      .page-heading { align-items: flex-start; flex-direction: column; gap: 13px; }
+      .page-heading .button { align-self: stretch; }
+      .welcome-row { align-items: flex-start; flex-direction: column; }
+      .welcome-row .page-heading { align-items: flex-start; }
+      .hero-project { grid-template-columns: 1fr; padding: 21px; }
+      .hero-project-side { flex-direction: row; align-items: center; padding-top: 2px; text-align: left; }
+      .hero-project-side > div:first-child { display: flex; align-items: center; gap: 10px; }
+      .progress-ring { width: 62px; height: 62px; }
+      .progress-ring strong { font-size: 18px; }
+      .progress-ring span { margin-left: -16px; margin-top: 21px; font-size: 7px; }
+      .metrics-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; margin-bottom: 22px; }
+      .metric-card { min-height: 98px; padding: 12px; }
+      .metric-top { font-size: 9px; }
+      .metric-icon { width: 27px; height: 27px; }
+      .dashboard-column.secondary { grid-template-columns: 1fr; }
+      .toolbar { align-items: stretch; flex-direction: column; }
+      .toolbar-left, .toolbar-right { width: 100%; }
+      .toolbar-right .input-search { width: 100%; }
+      .task-columns { grid-template-columns: 1fr; }
+      .task-column { padding: 10px; }
+      .experiment-grid, .finding-grid, .project-grid, .team-grid { grid-template-columns: 1fr; }
+      .project-detail { grid-template-columns: 1fr; }
+      .detail-stats { grid-template-columns: repeat(3,minmax(0,1fr)); }
+      .timeline-item { grid-template-columns: 47px 16px 1fr; gap: 7px; }
+      .timeline-date { font-size: 7px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+      .modal-root { padding: 10px; }
+      .modal-head, .modal-body { padding-inline: 16px; }
+      .popover-panel { top: 56px; right: 10px; width: min(280px,calc(100vw - 20px)); }
+      .toast-region { right: 10px; bottom: 10px; left: 10px; }
+      .toast { min-width: 0; }
+      .table-shell { border-radius: 12px; }
+      table { min-width: 730px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .hero-project::before { animation: none; }
+    }
+
+    /* Larger text: keep the original Morrow dashboard layout, with easier reading. */
+    body { font-size: 16px; line-height: 1.6; }
+    .brand-name { font-size: 17px; }
+    .brand-sub { font-size: 11px; }
+    .workspace-copy strong, .profile-meta strong { font-size: 14px; }
+    .workspace-copy span, .profile-meta span { font-size: 12px; }
+    .nav-label { font-size: 12px; }
+    .nav-item { font-size: 15px; }
+    .nav-count { font-size: 12px; }
+    .sidebar-note-top { font-size: 13px; }
+    .sidebar-note small { font-size: 12px; }
+    .breadcrumb { font-size: 14px; }
+    .search-trigger span { font-size: 13px; }
+    .key-hint { font-size: 11px; }
+    .button, .topbar .button-primary { min-height: 44px; font-size: 14px !important; }
+    .page-heading p { font-size: 15px; }
+    .eyebrow { font-size: 12px; }
+    .date-pill, .status-pill, .tag-pill, .priority-pill { min-height: 30px; font-size: 12px; }
+    .tag-pill { min-height: 28px; }
+    .section-title p { font-size: 14px; }
+    .text-link { font-size: 14px; }
+    .empty-state p { font-size: 14px; }
+    .workspace-label { font-size: 13px; }
+    .hero-project-copy > p { font-size: 15px; }
+    .progress-ring span { font-size: 11px; }
+    .progress-caption { font-size: 12px; }
+    .metric-top { font-size: 13px; }
+    .metric-trend, .metric-foot { font-size: 12px; }
+    .chart-total, .chart-day label, .chart-legend { font-size: 12px; }
+    .milestone-copy strong { font-size: 14px; }
+    .milestone-copy span { font-size: 13px; }
+    .milestone-date span { font-size: 10px; }
+    .activity-copy p { font-size: 14px; }
+    .activity-copy time { font-size: 12px; }
+    .project-row-main strong { font-size: 14px; }
+    .project-row-main span { font-size: 13px; }
+    .filter-tab { min-height: 40px; font-size: 13px; }
+    .input-search input, td, .record-title { font-size: 14px; }
+    .record-sub { font-size: 13px; }
+    th { font-size: 11px; }
+    .task-column-head strong, .task-title { font-size: 14px; }
+    .task-card > p { font-size: 13px; }
+    .task-due, .task-owner { font-size: 12px; }
+    .experiment-card p, .finding-card p, .project-card p { font-size: 14px; }
+    .experiment-footer span, .project-card-footer span, .experiment-footer strong { font-size: 13px; }
+    .protocol-preview { font-size: 13px; }
+    .finding-meta { font-size: 12px; }
+    .project-phase { font-size: 13px; }
+    .detail-stat span { font-size: 12px; }
+    .timeline-copy strong { font-size: 14px; }
+    .timeline-copy p { font-size: 13px; }
+    .timeline-copy .timeline-by { font-size: 12px; }
+    .member-card .member-role { font-size: 13px; }
+    .member-card .member-email, .member-load { font-size: 12px; }
+    .filter-note { font-size: 13px; }
+    .popover-item span { font-size: 14px; }
+    .popover-item small { font-size: 12px; }
+    .modal-head p, .field label { font-size: 13px; }
+    .field input, .field select, .field textarea { min-height: 44px; font-size: 14px; }
+    .modal-hint { font-size: 12px; }
+    .search-large input { font-size: 16px; }
+    .search-result-copy strong { font-size: 14px; }
+    .search-result-copy span { font-size: 12px; }
+    .search-empty, .toast { font-size: 14px; }
+    .project-detail p { font-size: 15px !important; }
+    .project-detail .detail-stat span { font-size: 12px; }
+    .project-detail > div strong { font-size: 14px; }
+
+    /* Smoother entrances, staggered cards, and clearer hover feedback. */
+    .view-root { animation: page-in 480ms cubic-bezier(.18,.75,.22,1) both; }
+    .stagger-in { animation: rise-in 720ms cubic-bezier(.18,.75,.22,1) both; animation-delay: calc(var(--index, 0) * 65ms); }
+    .hero-project { animation: hero-in 850ms cubic-bezier(.18,.75,.22,1) both; }
+    .hero-project::before { animation-duration: 30s; }
+    .eyebrow-dot { animation-duration: 2.2s; }
+    .progress-ring { animation: ring-in 900ms 220ms cubic-bezier(.18,.75,.22,1) both; }
+    .card-hover { transition: border-color 220ms ease, transform 260ms cubic-bezier(.18,.75,.22,1), box-shadow 260ms ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(27,43,37,.09); }
+    .project-row { transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease; }
+    .project-row:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(27,43,37,.06); }
+    .button { transition: transform 220ms cubic-bezier(.18,.75,.22,1), background 220ms ease, box-shadow 220ms ease; }
+    .button:hover { transform: translateY(-2px); }
+    .icon-button { transition: background 220ms ease, border-color 220ms ease, color 220ms ease, transform 220ms ease; }
+    .icon-button:hover { transform: translateY(-2px); }
+    @keyframes page-in { from { opacity: 0; transform: translateY(15px); filter: blur(3px); } to { opacity: 1; transform: translateY(0); filter: blur(0); } }
+    @keyframes rise-in { from { opacity: 0; transform: translateY(22px) scale(.985); filter: blur(3px); } to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); } }
+    @keyframes hero-in { from { opacity: 0; transform: translateY(18px) scale(.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes ring-in { from { transform: scale(.78) rotate(-20deg); opacity: .35; } to { transform: scale(1) rotate(0); opacity: 1; } }
+
+    @media (max-width: 640px) {
+      .breadcrumb { font-size: 13px; }
+      .topbar .button-primary { min-height: 42px; font-size: 13px !important; }
+      .metric-top { font-size: 12px; }
+      .hero-project-copy > p { font-size: 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .view-root, .stagger-in, .hero-project, .progress-ring { animation: none !important; filter: none !important; }
+      .hero-project::before { animation: none !important; }
+    }
+    .hero-line-completion { width: min(190px,100%); }
+    .hero-line-track { height: 9px; overflow: hidden; border-radius: 99px; background: rgba(255,255,255,.2); }
+    .hero-line-track span { display: block; height: 100%; border-radius: inherit; background: var(--lime); box-shadow: 0 0 12px rgba(216,238,154,.45); transition: width 700ms var(--ease); }
+    .hero-line-completion .progress-caption { margin-top: 8px; }
+    .project-progress-row .mini-progress { width: 100%; }
+    body.auth-locked { overflow: hidden; }
+    .auth-locked .app-shell { visibility: hidden; pointer-events: none; height: 100vh; overflow: hidden; }
+    .login-screen { position: fixed; inset: 0; z-index: 9999; display: grid; place-items: center; padding: 28px; overflow: auto; background: radial-gradient(ellipse at 8% 90%,rgba(216,238,154,.2),transparent 30%),var(--canvas); animation: login-fade .45s ease both; }
+    .login-screen[hidden] { display: none; }
+    .login-card { display: grid; grid-template-columns: 1fr .94fr; width: min(1120px,100%); min-height: min(700px,calc(100vh - 56px)); overflow: hidden; border: 1px solid rgba(28,43,39,.08); border-radius: 28px; background: var(--paper); box-shadow: 0 30px 90px rgba(28,43,39,.14); animation: login-rise .65s cubic-bezier(.2,.75,.25,1) both; }
+    .login-story { position: relative; display: flex; flex-direction: column; min-height: 620px; padding: 42px 48px 28px; overflow: hidden; color: white; background: radial-gradient(ellipse at 70% 78%,rgba(216,238,154,.14),transparent 38%),linear-gradient(145deg,#183c32,#234d40 62%,#2b5949); }
+    .login-story:after { position: absolute; top: -160px; right: -130px; width: 430px; height: 430px; border: 1px solid rgba(255,255,255,.1); border-radius: 50%; content: ""; }
+    .login-brand { z-index: 1; display: flex; align-items: center; gap: 12px; width: max-content; color: white; font-size: 21px; font-weight: 700; text-decoration: none; }
+    .login-brand small { display: block; margin-top: 2px; color: #c4d2c7; font: 700 9px var(--sans); letter-spacing: 1.6px; }
+    .login-mark { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 14px; color: var(--forest); background: var(--lime); font: 26px var(--serif); }
+    .story-copy { z-index: 1; margin: auto 0 0; padding-top: 55px; }
+    .story-kicker,.login-kicker { display: flex; align-items: center; gap: 9px; margin: 0 0 15px; color: var(--sage); font-size: 10px; font-weight: 700; letter-spacing: 1.5px; }
+    .story-kicker i,.story-foot i { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 14px rgba(216,238,154,.65); }
+    .story-copy h1 { margin: 0; font: 500 clamp(39px,4.3vw,58px)/.99 var(--serif); letter-spacing: -1.5px; }
+    .story-copy h1 em { color: var(--lime); font-weight: 400; }
+    .story-copy>p:last-child { max-width: 380px; margin: 20px 0 0; color: #d5dfd8; font-size: 16px; line-height: 1.65; }
+    .orbit { position: relative; height: 190px; margin: 12px 0 0; }
+    .orbit:before,.orbit:after { position: absolute; top: 50%; left: 50%; width: 154px; height: 154px; border: 1px solid rgba(255,255,255,.18); border-radius: 50%; content: ""; transform: translate(-50%,-50%); animation: breathe 5s ease-in-out infinite; }
+    .orbit:after { width: 230px; height: 106px; border-color: rgba(216,238,154,.28); transform: translate(-50%,-50%) rotate(-27deg); animation: none; }
+    .orbit b { position: absolute; top: 50%; left: 50%; width: 58px; height: 58px; border: 1px solid rgba(255,255,255,.3); border-radius: 20px; background: rgba(255,255,255,.1); transform: translate(-50%,-50%); }
+    .orbit span { position: absolute; padding: 8px 11px; border: 1px solid rgba(255,255,255,.17); border-radius: 99px; color: #eef3ee; background: rgba(255,255,255,.08); font-size: 11px; animation: float-label 4s ease-in-out infinite; }
+    .orbit span:nth-of-type(1) { top: 25px; left: 7%; }.orbit span:nth-of-type(2) { top: 30px; right: 1%; animation-delay: .7s; }.orbit span:nth-of-type(3) { bottom: 14px; left: 30%; animation-delay: 1.2s; }
+    .story-foot { z-index: 1; display: flex; align-items: center; gap: 9px; margin: 0; color: #c4d2c7; font-size: 12px; }
+    .login-panel { display: grid; place-items: center; padding: 48px clamp(30px,5vw,68px); }
+    .login-content { width: min(100%,390px); }
+    .login-kicker { margin-bottom: 10px; color: var(--sage-dark); font-size: 10px; }
+    .login-content h2 { margin: 0; color: var(--ink); font: 500 39px/1.1 var(--serif); letter-spacing: -.8px; }
+    .login-intro { margin: 9px 0 25px; color: var(--muted); font-size: 15px; }
+    .login-content form>label { display: block; margin: 16px 0 8px; color: var(--ink); font-size: 13px; font-weight: 700; }
+    .login-field { display: flex; align-items: center; min-height: 52px; gap: 10px; padding: 0 13px; border: 1px solid var(--line-dark); border-radius: 11px; background: white; transition: border-color .18s,box-shadow .18s,transform .18s; }
+    .login-field:focus-within { border-color: var(--sage-dark); box-shadow: 0 0 0 3px rgba(53,102,78,.12); transform: translateY(-1px); }
+    .login-field>span { color: var(--muted); font-size: 17px; }
+    .login-field input { width: 100%; min-width: 0; height: 48px; border: 0; outline: 0; color: var(--ink); background: transparent; font: 14px var(--sans); }
+    .login-field input::placeholder { color: #9aa39d; }
+    .login-field button { min-width: 42px; height: 40px; border: 0; border-radius: 8px; color: var(--sage-dark); background: transparent; font-size: 11px; cursor: pointer; }
+    .login-field button:hover { background: var(--paper-soft); }
+    .login-options { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 16px 0 21px; }
+    .remember { display: flex; align-items: center; gap: 7px; color: var(--muted); font-size: 12px; cursor: pointer; }.remember input { width: 16px; height: 16px; accent-color: var(--forest); }
+    #forgotPassword { padding: 5px 0; border: 0; color: var(--sage-dark); background: transparent; font: 700 12px var(--sans); cursor: pointer; }
+    #forgotPassword:hover { text-decoration: underline; }
+    .login-submit { display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; min-height: 52px; border: 0; border-radius: 11px; color: white; background: var(--forest); font: 700 14px var(--sans); cursor: pointer; box-shadow: 0 8px 18px rgba(24,60,50,.15); transition: transform .18s,background .18s,box-shadow .18s; }
+    .login-submit:hover { transform: translateY(-2px); background: var(--forest-2); box-shadow: 0 12px 22px rgba(24,60,50,.2); }
+    .login-submit span { font-size: 19px; }
+    .login-message { min-height: 30px; margin: 10px 0 0; color: var(--muted); font-size: 11px; line-height: 1.5; }
+    .divider { display: flex; align-items: center; gap: 12px; margin: 10px 0; color: var(--quiet); font-size: 10px; }.divider:before,.divider:after { flex: 1; height: 1px; background: var(--line); content: ""; }
+    .demo-button { width: 100%; min-height: 44px; border: 1px solid var(--line-dark); border-radius: 10px; color: var(--ink); background: transparent; font: 700 13px var(--sans); cursor: pointer; transition: background .18s,border-color .18s,transform .18s; }
+    .demo-button:hover { transform: translateY(-1px); border-color: var(--sage-dark); background: var(--paper-soft); }
+    .demo-button span { margin-left: 6px; color: var(--sage-dark); }
+    .privacy-note { margin: 15px 0 0; color: var(--quiet); font-size: 10px; line-height: 1.5; text-align: center; }
+    .login-screen.is-leaving { opacity: 0; transform: scale(.99); transition: opacity .32s,transform .32s; }
+    @keyframes login-fade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes login-rise { from { opacity: 0; transform: translateY(18px) scale(.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    @keyframes breathe { 50% { box-shadow: 0 0 34px rgba(216,238,154,.08); transform: translate(-50%,-50%) scale(1.04); } }
+    @keyframes float-label { 50% { transform: translateY(-5px); } }
+    @media(max-width:820px) { .login-story { padding-inline: 28px; }.login-panel { padding-inline: 28px; }.story-copy h1 { font-size: clamp(36px,5vw,48px); } }
+    @media(max-width:620px) { .login-screen { display: block; padding: 0; }.login-card { display: flex; flex-direction: column; min-height: 100vh; border: 0; border-radius: 0; }.login-story { min-height: 245px; padding: 22px 24px 17px; }.login-mark { width: 36px; height: 36px; }.login-brand { font-size: 18px; }.story-copy { padding-top: 28px; }.story-kicker { margin-bottom: 7px; font-size: 9px; }.story-copy h1 { font-size: 34px; }.story-copy>p:last-child { margin-top: 10px; font-size: 13px; line-height: 1.45; }.orbit { display: none; }.story-foot { margin-top: 14px; font-size: 10px; }.login-panel { flex: 1; padding: 28px 25px 22px; }.login-content h2 { font-size: 34px; }.login-intro { margin-bottom: 17px; } }
+    @media(prefers-reduced-motion:reduce) { .login-screen,.login-card,.orbit:before,.orbit span { animation: none !important; }.login-screen.is-leaving,.login-field,.login-submit,.demo-button { transition: none !important; } }
+    /* Research tools: added modules use the existing workspace colors and type. */
+    .tools-notice { display:flex; gap:11px; margin:18px 0; padding:14px 16px; border:1px solid #dce7d9; border-radius:13px; color:#45624f; background:#f0f5ed; font-size:13px; }
+    .tools-notice strong { display:block; margin-bottom:2px; color:var(--forest); }
+    .tools-notice svg { flex:none; width:18px; fill:none; stroke:currentColor; stroke-width:1.7; }
+    .tool-tabs { display:flex; gap:7px; overflow-x:auto; padding:4px 2px 13px; scrollbar-width:thin; }
+    .tool-tab { flex:none; min-height:38px; padding:8px 13px; border:1px solid var(--line); border-radius:99px; color:var(--muted); background:var(--paper); font:700 12px var(--sans); cursor:pointer; transition:all .18s ease; }
+    .tool-tab:hover,.tool-tab[aria-selected="true"] { border-color:var(--forest); color:white; background:var(--forest); }
+    .tool-summary { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin:18px 0; }
+    .tool-summary-card { padding:15px 17px; border:1px solid var(--line); border-radius:14px; background:var(--paper); }
+    .tool-summary-card strong { display:block; color:var(--forest); font:500 27px var(--serif); }
+    .tool-summary-card span { color:var(--muted); font-size:12px; }
+    .tools-columns { display:grid; grid-template-columns:minmax(250px,.8fr) minmax(0,1.2fr); gap:16px; align-items:start; }
+    .tool-card-stack { display:grid; gap:12px; }
+    .tool-form { display:grid; gap:12px; }
+    .tool-form h3 { margin:0 0 3px; color:var(--ink); font:500 22px var(--serif); }
+    .tool-form p { margin:0 0 5px; color:var(--muted); font-size:13px; }
+    .tool-form-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+    .tool-field { display:grid; gap:6px; color:var(--ink); font-size:12px; font-weight:700; }
+    .tool-field.full { grid-column:1/-1; }
+    .tool-field input,.tool-field textarea,.tool-field select { width:100%; min-height:42px; padding:9px 11px; border:1px solid var(--line-dark); border-radius:9px; color:var(--ink); background:white; font:13px var(--sans); }
+    .tool-field textarea { min-height:76px; resize:vertical; }
+    .tool-field input:focus,.tool-field textarea:focus,.tool-field select:focus { outline:3px solid rgba(53,102,78,.15); border-color:var(--sage-dark); }
+    .tool-form .button { justify-self:start; }
+    .tool-record { padding:16px 17px; border:1px solid var(--line); border-radius:14px; background:var(--paper); animation:rise-in .45s both; }
+    .tool-record-top { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; }
+    .tool-record h3 { margin:0; color:var(--ink); font:500 20px/1.2 var(--serif); }
+    .tool-record p { margin:8px 0 0; color:var(--muted); font-size:13px; line-height:1.55; }
+    .tool-record small { display:block; margin-top:10px; color:var(--quiet); font-size:11px; }
+    .tool-chip { display:inline-flex; padding:5px 8px; border-radius:99px; color:var(--sage-dark); background:var(--sage); font-size:10px; font-weight:700; }
+    .tool-record-actions { display:flex; gap:7px; margin-top:11px; }
+    .tool-small-button { min-height:34px; padding:6px 10px; border:1px solid var(--line); border-radius:8px; color:var(--forest); background:var(--paper-soft); font:700 11px var(--sans); cursor:pointer; }
+    .tool-small-button:hover { border-color:var(--sage-dark); background:var(--sage); }
+    .tool-search { width:min(300px,100%); min-height:40px; margin:0 0 12px; padding:9px 12px; border:1px solid var(--line-dark); border-radius:9px; background:white; font:13px var(--sans); }
+    .ethics-list { display:grid; gap:9px; }
+    .ethics-row { display:flex; gap:12px; padding:13px 14px; border:1px solid var(--line); border-radius:11px; background:var(--paper); cursor:pointer; }
+    .ethics-row input { width:18px; height:18px; margin:1px 0 0; accent-color:var(--forest); }
+    .ethics-row strong { display:block; color:var(--ink); font-size:13px; }
+    .ethics-row small { display:block; margin-top:3px; color:var(--muted); font-size:12px; }
+    .calendar-list { display:grid; }
+    .calendar-row { display:grid; grid-template-columns:95px 18px minmax(0,1fr) auto; gap:12px; align-items:center; min-height:68px; border-bottom:1px solid var(--line); }
+    .calendar-date { color:var(--sage-dark); font-size:12px; font-weight:700; }
+    .calendar-dot { width:10px; height:10px; border-radius:50%; background:var(--lime); box-shadow:0 0 0 4px var(--sage); }
+    .calendar-row strong { display:block; color:var(--ink); font-size:13px; }
+    .calendar-row small { display:block; margin-top:3px; color:var(--muted); font-size:11px; }
+    .tool-empty { padding:24px; border:1px dashed var(--line-dark); border-radius:12px; color:var(--muted); text-align:center; font-size:13px; }
+    @media(max-width:850px) { .tools-columns { grid-template-columns:1fr; }.tool-summary { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+    @media(max-width:560px) { .tool-form-grid { grid-template-columns:1fr; }.tool-field.full { grid-column:auto; }.calendar-row { grid-template-columns:70px 12px 1fr; gap:8px; }.calendar-row .tool-chip { display:none; } }
+    @media(prefers-reduced-motion:reduce) { .tool-record { animation:none; }.tool-tab,.tool-small-button { transition:none; } }
+  </style>
+</head>
+<body class="auth-locked">
+  <section class="login-screen" id="loginScreen" aria-labelledby="loginTitle">
+    <div class="login-card">
+      <div class="login-story">
+        <a class="login-brand" href="#"><span class="login-mark">M</span><span>morrow<small>RESEARCH WORKSPACE</small></span></a>
+        <div class="story-copy">
+          <p class="story-kicker"><i></i> MIND &amp; MEMORY LAB</p>
+          <h1>Research moves<br><em>forward, together.</em></h1>
+          <p>Bring your questions, literature, experiments, and findings into one calm space for your whole team.</p>
+        </div>
+        <div class="orbit" aria-hidden="true"><b></b><span>Research questions</span><span>Shared evidence</span><span>Team progress</span></div>
+        <p class="story-foot"><i></i> Thoughtful work, made visible.</p>
+      </div>
+      <div class="login-panel">
+        <div class="login-content">
+          <p class="login-kicker">YOUR TEAM WORKSPACE</p>
+          <h2 id="loginTitle">Welcome back</h2>
+          <p class="login-intro">Sign in to continue to your research workspace.</p>
+          <form id="loginForm">
+            <label for="loginEmail">Email address</label>
+            <div class="login-field"><span aria-hidden="true">✉</span><input id="loginEmail" type="email" placeholder="you@university.edu" autocomplete="username" required></div>
+            <label for="loginPassword">Password</label>
+            <div class="login-field"><span aria-hidden="true">⌑</span><input id="loginPassword" type="password" placeholder="Enter your password" autocomplete="current-password" minlength="6" required><button id="showPassword" type="button" aria-label="Show password">Show</button></div>
+            <div class="login-options"><label class="remember"><input id="rememberMe" type="checkbox"> Keep me signed in</label><button id="forgotPassword" type="button">Forgot password?</button></div>
+            <button class="login-submit" type="submit">Sign in to workspace <span aria-hidden="true">→</span></button>
+            <p class="login-message" id="loginMessage" role="status" aria-live="polite">Demo access: any valid email and a password with 6 or more characters.</p>
+          </form>
+          <div class="divider"><span>OR</span></div>
+          <button class="demo-button" id="demoLogin" type="button">Explore the demo workspace <span aria-hidden="true">↗</span></button>
+          <p class="privacy-note">This demonstration runs in your browser. No password is sent to a server or saved.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#" data-view-link="overview" aria-label="Morrow research workspace home">
+        <span class="brand-mark" aria-hidden="true"><svg class="icon" viewBox="0 0 24 24"><path d="M4 18V6l8 8 8-8v12M4 6h4M16 6h4"></path></svg></span>
+        <span><span class="brand-name">morrow</span><span class="brand-sub">research workspace</span></span>
+      </a>
+      <button class="workspace-switch" type="button" data-action="workspace-menu" aria-expanded="false" aria-controls="popoverRoot" aria-label="Switch project">
+        <span class="workspace-mark">M</span>
+        <span class="workspace-copy"><strong>Mind &amp; Memory Lab</strong><span>Research workspace</span></span>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"></path></svg>
+      </button>
+      <div class="nav-label">Workspace</div>
+      <nav class="primary-nav" aria-label="Workspace sections">
+        <button class="nav-item" type="button" data-view="overview" aria-current="page"><svg class="icon" viewBox="0 0 24 24"><path d="m3.5 10 8.5-7 8.5 7v10.5h-6v-7h-5v7h-6z"></path></svg><span>Overview</span></button>
+        <button class="nav-item" type="button" data-view="projects"><svg class="icon" viewBox="0 0 24 24"><path d="M3.5 7.5h6l2 2h9v10h-17z"></path><path d="M3.5 7.5v-2h6l2 2"></path></svg><span>Projects</span><span class="nav-count" id="projectCount">3</span></button>
+        <button class="nav-item" type="button" data-view="literature"><svg class="icon" viewBox="0 0 24 24"><path d="M5 4.5h11a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3z"></path><path d="M5 16.5a3 3 0 0 1 3-3h11M9 8h6M9 10.5h5"></path></svg><span>Literature</span><span class="nav-count" id="paperCount">6</span></button>
+        <button class="nav-item" type="button" data-view="tasks"><svg class="icon" viewBox="0 0 24 24"><path d="M8 6h12M8 12h12M8 18h12"></path><path d="m3.5 6 1.2 1.2L6.5 5M3.5 12l1.2 1.2L6.5 11M3.5 18l1.2 1.2L6.5 17"></path></svg><span>Tasks</span><span class="nav-count" id="taskCount">6</span></button>
+        <button class="nav-item" type="button" data-view="experiments"><svg class="icon" viewBox="0 0 24 24"><path d="M9 3.5h6M10 3.5v6L4.5 19a1.5 1.5 0 0 0 1.3 2.2h12.4a1.5 1.5 0 0 0 1.3-2.2L14 9.5v-6"></path><path d="M7 15h10"></path></svg><span>Experiments</span></button>
+        <button class="nav-item" type="button" data-view="findings"><svg class="icon" viewBox="0 0 24 24"><path d="M12 3a7 7 0 0 0-4.1 12.7c.7.5 1.1 1.1 1.1 1.8h6c0-.7.4-1.3 1.1-1.8A7 7 0 0 0 12 3Z"></path><path d="M9.5 20h5M10 17.5h4"></path></svg><span>Findings</span></button>
+        <button class="nav-item" type="button" data-view="timeline"><svg class="icon" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"></path><circle cx="8" cy="5" r="2"></circle><circle cx="15" cy="12" r="2"></circle><circle cx="10" cy="19" r="2"></circle></svg><span>Timeline</span></button>
+        <button class="nav-item" type="button" data-view="team"><svg class="icon" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.3"></circle><path d="M3 20a6 6 0 0 1 12 0M16 5.2a3.2 3.2 0 0 1 0 6.1M17 14a5 5 0 0 1 4 4.8"></path></svg><span>Team</span></button>
+        <button class="nav-item" type="button" data-view="researchTools"><svg class="icon" viewBox="0 0 24 24"><path d="M4 5h16M4 10h16M4 15h10M4 20h7"></path><circle cx="18" cy="17" r="3"></circle></svg><span>Research tools</span></button>
+      </nav>
+      <div class="sidebar-spacer"></div>
+      <div class="sidebar-note">
+        <div class="sidebar-note-top"><span>Workspace storage</span><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v10m0 0 4-4m-4 4-4-4M4 16v4h16v-4"></path></svg></div>
+        <div class="storage-track" aria-label="36 percent of 5 gigabytes used"><span></span></div>
+        <small>1.8 GB of 5 GB used</small>
+      </div>
+      <button class="profile-button" type="button" data-action="profile-menu">
+        <span class="avatar">MC</span><span class="profile-meta"><strong>Aryan</strong><span>Principal investigator</span></span>
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="1"></circle><circle cx="19" cy="12" r="1"></circle><circle cx="5" cy="12" r="1"></circle></svg>
+      </button>
+    </aside>
+    <div class="scrim" id="scrim" data-action="close-sidebar" aria-hidden="true"></div>
+    <main class="main-shell" id="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-button menu-toggle" type="button" data-action="toggle-sidebar" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar"><svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
+          <div class="breadcrumb">Mind &amp; Memory Lab <span aria-hidden="true">/</span> <strong id="breadcrumbCurrent">Overview</strong></div>
+        </div>
+        <div class="topbar-actions">
+          <button class="search-trigger" type="button" data-action="open-search" aria-label="Search workspace"><svg class="icon" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 4.2 4.2"></path></svg><span>Search anything...</span><span class="key-hint">⌘ K</span></button>
+          <button class="icon-button" type="button" data-action="notifications" aria-label="Show recent activity"><svg class="icon" viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"></path></svg><span class="notification-dot"></span></button>
+          <button class="button button-primary" type="button" data-action="create-menu" aria-expanded="false" aria-controls="popoverRoot"><svg class="icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg><span>New</span></button>
+        </div>
+      </header>
+      <div class="view-wrap view-enter" id="viewWrap" tabindex="-1"><div class="view-root"><div class="welcome-row"><div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span>RESEARCH WORKSPACE · SAMPLE DATA</div><h1>Your work, <em>in focus.</em></h1><p>A clear view of the questions, evidence, and next steps your team is moving forward.</p></div></div><div class="workspace-label"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"></rect><path d="M7.5 3v4M16.5 3v4M3.5 9.5h17M8 13h.01M12 13h.01M16 13h.01M8 17h.01M12 17h.01"></path></svg>Tuesday, November 3</div></div><section class="hero-project"><div class="hero-project-copy"><div class="eyebrow"><span class="eyebrow-dot"></span> FEATURED PROJECT · NEUROSCIENCE</div><h2>Sleep &amp; memory consolidation</h2><p>How does sleep quality shape memory formation?</p><div class="hero-project-meta"><span class="tag-pill">Data collection</span><span class="tag-pill">PI: Aryan</span><span class="tag-pill">Due Nov 21</span></div></div><div class="hero-project-side"><div><div class="hero-line-completion" role="progressbar" aria-label="Project completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="68"><div class="hero-line-track"><span style="width:68%"></span></div><div class="progress-caption">Project completion</div></div></div><div class="hero-project-actions"><button class="button button-light" type="button" data-action="select-project" data-id="p-sleep"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>Open project</button></div></div></section><section class="metrics-grid" aria-label="Workspace metrics"><article class="card metric-card stagger-in" style="--index:0"><div class="metric-top"><span>Active projects</span><span class="metric-icon"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 7.5h6l2 2h9v10h-17z"></path><path d="M3.5 7.5v-2h6l2 2"></path></svg></span></div><div class="metric-value-row"><strong class="metric-value">3</strong><span class="metric-trend">↗ On track</span></div><div class="metric-foot">Across 3 workstreams</div></article><article class="card metric-card stagger-in" style="--index:1"><div class="metric-top"><span>Papers in library</span><span class="metric-icon"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5h11a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3z"></path><path d="M5 16.5a3 3 0 0 1 3-3h11M9 8h6"></path></svg></span></div><div class="metric-value-row"><strong class="metric-value">6</strong><span class="metric-trend">↗ On track</span></div><div class="metric-foot">Reading is moving</div></article><article class="card metric-card stagger-in" style="--index:2"><div class="metric-top"><span>Open tasks</span><span class="metric-icon"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12"></path><path d="m3.5 6 1.2 1.2L6.5 5M3.5 12l1.2 1.2L6.5 11M3.5 18l1.2 1.2L6.5 17"></path></svg></span></div><div class="metric-value-row"><strong class="metric-value">6</strong><span class="metric-trend">↗ 2 done today</span></div><div class="metric-foot">Team-wide workload</div></article><article class="card metric-card stagger-in" style="--index:3"><div class="metric-top"><span>Shared findings</span><span class="metric-icon"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"></path><path d="m19 15 .9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"></path></svg></span></div><div class="metric-value-row"><strong class="metric-value">3</strong><span class="metric-trend">↗ On track</span></div><div class="metric-foot">Across your projects</div></article></section><div class="dashboard-grid"><div class="dashboard-column"><section><div class="section-title"><div><h2>Research momentum</h2><p>Shared work across your projects this week</p></div><button class="text-link" type="button" data-view="timeline">View timeline <svg class="icon " viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button></div><div class="card panel momentum-panel"><div class="chart-head"><div class="chart-total"><strong>32</strong>actions this week</div><span class="date-pill"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="16" rx="2"></rect><path d="M7.5 3v4M16.5 3v4M3.5 9.5h17M8 13h.01M12 13h.01M16 13h.01M8 17h.01M12 17h.01"></path></svg>Last 7 days <svg class="icon " viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5"></path></svg></span></div><div class="chart-area" role="img" aria-label="Activity chart for Monday to Sunday, with a rise in project activity toward Friday"><div class="chart-day"><div class="chart-bars"><span class="chart-bar" style="--height:38%;--index:0"></span><span class="chart-bar secondary" style="--height:19%;--index:2"></span></div><label>M</label></div><div class="chart-day"><div class="chart-bars"><span class="chart-bar" style="--height:62%;--index:1"></span><span class="chart-bar secondary" style="--height:35%;--index:3"></span></div><label>T</label></div><div class="chart-day"><div class="chart-bars"><span class="chart-bar" style="--height:51%;--index:2"></span><span class="chart-bar secondary" style="--height:24%;--index:4"></span></div><label>W</label></div><div class="chart-day"><div class="chart-bars"><span class="chart-bar" style="--height:78%;--index:3"></span><span class="chart-bar secondary" style="--height:51%;--index:5"></span></div><label>T</label></div><div class="chart-day"><div class="chart-bars"><span class="chart-bar" style="--height:57%;--index:4"></span><span class="chart-bar secondary" style="--height:30%;--index:6"></span></div><label>F</label></div><div class="chart-day"><div class="chart-bars"><span class="chart-bar" style="--height:88%;--index:5"></span><span class="chart-bar secondary" style="--height:61%;--index:7"></span></div><label>S</label></div><div class="chart-day"><div class="chart-bars"><span class="chart-bar" style="--height:68%;--index:6"></span><span class="chart-bar secondary" style="--height:41%;--index:8"></span></div><label>S</label></div></div><div class="chart-legend"><span><i class="legend-dot"></i>Research activity</span><span><i class="legend-dot light"></i>Completed tasks</span></div></div></section><section><div class="section-title"><div><h2>Projects in motion</h2><p>Your team has ' + data.projects.filter(function (item) { return !item.archived; }).length + ' active research threads</p></div><button class="text-link" type="button" data-view="projects">All projects <svg class="icon " viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button></div><div class="project-list"><div class="project-row stagger-in" style="--index:0" role="button" tabindex="0" data-action="select-project" data-id="p-sleep"><span class="project-mark" style="--project-tone:#e2ecdf;--project-ink:#456b50">S</span><span class="project-row-main"><strong>Sleep &amp; memory consolidation</strong><span>Data collection</span></span><span class="mini-progress" aria-label="68 percent complete"><span style="--progress:68%"></span></span></div><div class="project-row stagger-in" style="--index:1" role="button" tabindex="0" data-action="select-project" data-id="p-air"><span class="project-mark" style="--project-tone:#e3eaf1;--project-ink:#4c637d">C</span><span class="project-row-main"><strong>Community air quality mapping</strong><span>Fieldwork</span></span><span class="mini-progress" aria-label="41 percent complete"><span style="--progress:41%"></span></span></div><div class="project-row stagger-in" style="--index:2" role="button" tabindex="0" data-action="select-project" data-id="p-language"><span class="project-mark" style="--project-tone:#f1e8d9;--project-ink:#8b6840">B</span><span class="project-row-main"><strong>Bilingual learning &amp; attention</strong><span>Literature review</span></span><span class="mini-progress" aria-label="23 percent complete"><span style="--progress:23%"></span></span></div></div></section></div><div class="dashboard-column secondary"><section><div class="section-title"><div><h2>Next milestones</h2><p>Small steps, visible progress</p></div><button class="text-link" type="button" data-view="tasks">Tasks <svg class="icon " viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button></div><div class="card panel"><div class="milestone-list"><div class="milestone"><div class="milestone-date"><strong>05</strong><span>Nov</span></div><div class="milestone-copy"><strong>Cohort criteria review</strong><span>Sleep &amp; memory · Aryan + Ishita</span></div><svg class="icon " viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div><div class="milestone"><div class="milestone-date"><strong>08</strong><span>Nov</span></div><div class="milestone-copy"><strong>Pilot analysis checkpoint</strong><span>Sleep &amp; memory · Jiya</span></div><svg class="icon " viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div><div class="milestone"><div class="milestone-date"><strong>12</strong><span>Nov</span></div><div class="milestone-copy"><strong>Fieldwork week 4 review</strong><span>Air quality · Piyush + Gurpreet</span></div><svg class="icon " viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></div></div></div></section><section><div class="section-title"><div><h2>Team pulse</h2><p>Latest from your collaborators</p></div><button class="text-link" type="button" data-view="team">Meet the team <svg class="icon " viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button></div><div class="card panel"><div class="activity-list"><div class="activity-item"><span class="activity-mark"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"></path><path d="m19 15 .9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"></path></svg></span><div class="activity-copy"><p><strong>Jiya</strong> A new pilot insight was captured</p><time>Recall stays stable after full-night sleep · 18 minutes ago</time></div></div><div class="activity-item"><span class="activity-mark"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5h11a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3z"></path><path d="M5 16.5a3 3 0 0 1 3-3h11M9 8h6"></path></svg></span><div class="activity-copy"><p><strong>Ishita</strong> Added 3 papers to the reading list</p><time>Sleep &amp; memory consolidation · 1 hour ago</time></div></div><div class="activity-item"><span class="activity-mark"><svg class="icon " viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3.5h6M10 3.5v6L4.5 19a1.5 1.5 0 0 0 1.3 2.2h12.4a1.5 1.5 0 0 0 1.3-2.2L14 9.5v-6"></path><path d="M7 15h10"></path></svg></span><div class="activity-copy"><p><strong>Gurpreet</strong> Updated participant progress</p><time>Overnight recall study · 24 of 42 · 2 hours ago</time></div></div></div><button class="button button-secondary" style="width:100%;margin-top:8px" type="button" data-view="timeline">Open activity timeline <svg class="icon " viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></button></div></section></div></div></div></div>
+    </main>
+  </div>
+  <div class="popover-root" id="popoverRoot" hidden=""></div>
+  <div class="modal-root" id="modalRoot" hidden="" aria-hidden="true">
+    <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle" id="modalCard"></section>
+  </div>
+  <div class="toast-region" id="toastRegion" role="status" aria-live="polite"></div>
+  <script>
+(function () {
+      'use strict';
+      var STORAGE_KEY = 'morrow-research-workspace-v1';
+      var today = new Date();
+      var dateInput = function (offset) { var d = new Date(today); d.setDate(d.getDate() + offset); return d.toISOString().slice(0, 10); };
+      var seed = {
+        activeProjectId: 'p-sleep',
+        projects: [
+          { id: 'p-sleep', name: 'Sleep & memory consolidation', focus: 'How does sleep quality shape memory formation?', phase: 'Data collection', progress: 68, due: dateInput(18), owner: 'm-maya', tone: '#e2ecdf', ink: '#456b50', category: 'NEUROSCIENCE' },
+          { id: 'p-air', name: 'Community air quality mapping', focus: 'Mapping environmental exposure across neighborhoods.', phase: 'Fieldwork', progress: 41, due: dateInput(32), owner: 'm-amir', tone: '#e3eaf1', ink: '#4c637d', category: 'PUBLIC HEALTH' },
+          { id: 'p-language', name: 'Bilingual learning & attention', focus: 'Testing how language context affects working memory.', phase: 'Literature review', progress: 23, due: dateInput(54), owner: 'm-lena', tone: '#f1e8d9', ink: '#8b6840', category: 'COGNITIVE SCIENCE' }
+        ],
+        members: [
+          { id: 'm-maya', name: 'Aryan', initials: 'AR', role: 'Principal investigator', email: 'aryan@example.edu', avatar: '' },
+          { id: 'm-amir', name: 'Ishita Mishra', initials: 'IM', role: 'PhD researcher', email: 'ishita.mishra@example.edu', avatar: 'a2' },
+          { id: 'm-lena', name: 'Jiya Chadha', initials: 'JC', role: 'Data scientist', email: 'jiya.chadha@example.edu', avatar: 'a3' },
+          { id: 'm-theo', name: 'Piyush Dhaka', initials: 'PD', role: 'Research assistant', email: 'piyush.dhaka@example.edu', avatar: 'a4' },
+          { id: 'm-noor', name: 'Gurpreet Singh', initials: 'GS', role: 'Postdoctoral fellow', email: 'gurpreet.singh@example.edu', avatar: 'a5' }
+        ],
+        literature: [
+          { id: 'l-1', title: 'Sleep-dependent memory consolidation across the adult lifespan', authors: 'R. Hart, M. Alvarez, et al.', source: 'Journal of Cognitive Neuroscience', year: '2024', projectId: 'p-sleep', status: 'Reviewed', tags: ['Sleep', 'Memory'], saved: true },
+          { id: 'l-2', title: 'Slow-wave activity and next-day learning outcomes', authors: 'S. Chen & A. Patel', source: 'Neuroscience Review', year: '2023', projectId: 'p-sleep', status: 'Reading', tags: ['EEG', 'Learning'], saved: false },
+          { id: 'l-3', title: 'A practical guide to mixed-effects models in behavioral research', authors: 'K. Morgan, T. Ellis', source: 'Methods in Psychology', year: '2022', projectId: 'p-sleep', status: 'To read', tags: ['Methods'], saved: false },
+          { id: 'l-4', title: 'Neighborhood-scale variation in particulate exposure', authors: 'D. Flores, N. Hassan, et al.', source: 'Environmental Health', year: '2025', projectId: 'p-air', status: 'Reading', tags: ['Air quality', 'Mapping'], saved: true },
+          { id: 'l-5', title: 'Language context and executive attention in bilingual adults', authors: 'L. Park & E. Sato', source: 'Applied Psycholinguistics', year: '2024', projectId: 'p-language', status: 'To read', tags: ['Bilingualism'], saved: false },
+          { id: 'l-6', title: 'Open protocols for reproducible behavioral studies', authors: 'A. Patel, J. Lewis', source: 'Open Science Framework', year: '2023', projectId: 'p-sleep', status: 'Reviewed', tags: ['Open science'], saved: true }
+        ],
+        tasks: [
+          { id: 't-1', title: 'Validate participant cohort criteria', description: 'Confirm exclusion criteria with the clinical partner before recruitment opens.', projectId: 'p-sleep', owner: 'm-maya', due: dateInput(2), priority: 'High', status: 'progress' },
+          { id: 't-2', title: 'Review the remaining 12 abstracts', description: 'Screen papers for the updated literature matrix.', projectId: 'p-sleep', owner: 'm-amir', due: dateInput(1), priority: 'Medium', status: 'todo' },
+          { id: 't-3', title: 'Finalize overnight recall protocol', description: 'Incorporate feedback from the pilot session.', projectId: 'p-sleep', owner: 'm-noor', due: dateInput(3), priority: 'High', status: 'progress' },
+          { id: 't-4', title: 'Prepare EEG export for analysis', description: 'Align event markers and remove test sessions.', projectId: 'p-sleep', owner: 'm-lena', due: dateInput(0), priority: 'Medium', status: 'todo' },
+          { id: 't-5', title: 'Upload field sensor calibration logs', description: 'Attach the October calibration sheet to the project record.', projectId: 'p-air', owner: 'm-theo', due: dateInput(4), priority: 'Low', status: 'todo' },
+          { id: 't-6', title: 'Draft bilingual attention search terms', description: 'Add alternate terms and screening notes to the review.', projectId: 'p-language', owner: 'm-amir', due: dateInput(6), priority: 'Low', status: 'todo' },
+          { id: 't-7', title: 'Share the pilot summary with the team', description: 'The pilot notes and participant flow are ready for review.', projectId: 'p-sleep', owner: 'm-noor', due: dateInput(-1), priority: 'Low', status: 'done' }
+        ],
+        experiments: [
+          { id: 'e-1', name: 'Overnight recall study', projectId: 'p-sleep', owner: 'm-noor', status: 'Running', participants: '24 / 42 participants', protocol: 'Two-session recall task with overnight polysomnography. Current cohort is in week three of recruitment.', updated: 'Updated 2 hours ago' },
+          { id: 'e-2', name: 'Sleep restriction pilot', projectId: 'p-sleep', owner: 'm-lena', status: 'Analyzing', participants: '18 participants', protocol: 'Within-subject pilot comparing habitual sleep with a restricted-sleep condition.', updated: 'Updated yesterday' },
+          { id: 'e-3', name: 'Neighborhood sensor walk', projectId: 'p-air', owner: 'm-theo', status: 'Planning', participants: '12 routes planned', protocol: 'Paired low-cost particulate sensors on repeated routes across four study blocks.', updated: 'Updated Oct 30' },
+          { id: 'e-4', name: 'Color-word attention task', projectId: 'p-language', owner: 'm-amir', status: 'Planning', participants: 'Pilot: 8 participants', protocol: 'Counterbalanced language cue task with accuracy and response-time measures.', updated: 'Updated Oct 28' }
+        ],
+        findings: [
+          { id: 'f-1', title: 'Recall stays stable after full-night sleep', summary: 'The pilot cohort showed a consistent recall advantage after a full night of sleep; confidence intervals still overlap across age bands.', projectId: 'p-sleep', category: 'PILOT INSIGHT', author: 'm-lena', date: dateInput(-1), accent: '#7ea285' },
+          { id: 'f-2', title: 'Sensor placement changes the street-level picture', summary: 'Measurements taken at street level vary more by block than the nearest fixed monitor suggests.', projectId: 'p-air', category: 'FIELD NOTE', author: 'm-theo', date: dateInput(-2), accent: '#879cba' },
+          { id: 'f-3', title: 'Language cues may shift task-switching cost', summary: 'Early responses point to a small context effect; the pilot sample is too small to support a firm conclusion.', projectId: 'p-language', category: 'EARLY SIGNAL', author: 'm-amir', date: dateInput(-3), accent: '#c99a69' }
+        ],
+        activity: [
+          { id: 'a-1', type: 'finding', title: 'A new pilot insight was captured', detail: 'Recall stays stable after full-night sleep', by: 'm-lena', projectId: 'p-sleep', time: '18 minutes ago' },
+          { id: 'a-2', type: 'literature', title: 'Added 3 papers to the reading list', detail: 'Sleep & memory consolidation', by: 'm-amir', projectId: 'p-sleep', time: '1 hour ago' },
+          { id: 'a-3', type: 'experiment', title: 'Updated participant progress', detail: 'Overnight recall study · 24 of 42', by: 'm-noor', projectId: 'p-sleep', time: '2 hours ago' },
+          { id: 'a-4', type: 'task', title: 'Completed a project task', detail: 'Share the pilot summary with the team', by: 'm-noor', projectId: 'p-sleep', time: 'Yesterday' },
+          { id: 'a-5', type: 'project', title: 'Project phase moved to fieldwork', detail: 'Community air quality mapping', by: 'm-maya', projectId: 'p-air', time: 'Yesterday' }
+        ]
+      };
+      function clone(value) { return JSON.parse(JSON.stringify(value)); }
+      function loadState() {
+        try {
+          var saved = localStorage.getItem(STORAGE_KEY);
+          if (saved) {
+            var parsed = JSON.parse(saved);
+            if (parsed && Array.isArray(parsed.projects) && Array.isArray(parsed.tasks) && Array.isArray(parsed.members)) {
+              parsed.members = parsed.members.map(function (member) {
+                var updatedMember = seed.members.find(function (item) { return item.id === member.id; });
+                return updatedMember ? Object.assign({}, member, { name: updatedMember.name, initials: updatedMember.initials, email: updatedMember.email, role: updatedMember.role, avatar: updatedMember.avatar }) : member;
+              });
+              try { localStorage.setItem(STORAGE_KEY, JSON.stringify(parsed)); } catch (error) {}
+              return parsed;
+            }
+          }
+        } catch (error) {}
+        return clone(seed);
+      }
+      var data = loadState();
+      var currentView = 'overview';
+      var activeFilter = 'all';
+      var tableQuery = '';
+      var ui = {
+        sidebar: document.getElementById('sidebar'),
+        scrim: document.getElementById('scrim'),
+        view: document.getElementById('viewWrap'),
+        breadcrumb: document.getElementById('breadcrumbCurrent'),
+        modal: document.getElementById('modalRoot'),
+        modalCard: document.getElementById('modalCard'),
+        popover: document.getElementById('popoverRoot'),
+        toasts: document.getElementById('toastRegion')
+      };
+      var viewNames = { overview: 'Overview', projects: 'Projects', literature: 'Literature', tasks: 'Tasks', experiments: 'Experiments', findings: 'Findings', timeline: 'Timeline', team: 'Team', researchTools: 'Research tools' };
+      var iconPaths = {
+        book: '<path d="M5 4.5h11a3 3 0 0 1 3 3v12H8a3 3 0 0 1-3-3z"/><path d="M5 16.5a3 3 0 0 1 3-3h11M9 8h6"/>',
+        task: '<path d="M8 6h12M8 12h12M8 18h12"/><path d="m3.5 6 1.2 1.2L6.5 5M3.5 12l1.2 1.2L6.5 11M3.5 18l1.2 1.2L6.5 17"/>',
+        flask: '<path d="M9 3.5h6M10 3.5v6L4.5 19a1.5 1.5 0 0 0 1.3 2.2h12.4a1.5 1.5 0 0 0 1.3-2.2L14 9.5v-6"/><path d="M7 15h10"/>',
+        spark: '<path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="m19 15 .9 2.1L22 18l-2.1.9L19 21l-.9-2.1L16 18l2.1-.9z"/>',
+        folder: '<path d="M3.5 7.5h6l2 2h9v10h-17z"/><path d="M3.5 7.5v-2h6l2 2"/>',
+        calendar: '<rect x="3.5" y="5" width="17" height="16" rx="2"/><path d="M7.5 3v4M16.5 3v4M3.5 9.5h17M8 13h.01M12 13h.01M16 13h.01M8 17h.01M12 17h.01"/>',
+        team: '<circle cx="9" cy="8" r="3.3"/><path d="M3 20a6 6 0 0 1 12 0M16 5.2a3.2 3.2 0 0 1 0 6.1M17 14a5 5 0 0 1 4 4.8"/>',
+        clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+        check: '<path d="m5 12.5 4.2 4.2L19 7"/>',
+        arrow: '<path d="M5 12h14M13 6l6 6-6 6"/>',
+        search: '<circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 4.2 4.2"/>',
+        plus: '<path d="M12 5v14M5 12h14"/>',
+        close: '<path d="m6 6 12 12M18 6 6 18"/>',
+        more: '<circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/>',
+        download: '<path d="M12 3v11m0 0 4-4m-4 4-4-4M4 16v4h16v-4"/>',
+        alert: '<path d="M12 3 2.8 20h18.4z"/><path d="M12 9v5m0 3h.01"/>',
+        quote: '<path d="M4 11h6v8H3v-7c0-5 2-7 7-8M14 11h6v8h-7v-7c0-5 2-7 7-8"/>',
+        link: '<path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7.1-7.1l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7.1 7.1l1.7-1.7"/>',
+        chevron: '<path d="m7 10 5 5 5-5"/>'
+      };
+      function icon(name, cls) { return '<svg class="icon ' + (cls || '') + '" viewBox="0 0 24 24" aria-hidden="true">' + (iconPaths[name] || iconPaths.spark) + '</svg>'; }
+      function escapeHtml(value) { return String(value == null ? '' : value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
+      function persist() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch (error) { showToast('This browser could not save workspace changes.'); } }
+      function uid(prefix) { return prefix + '-' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6); }
+      function person(id) { return data.members.find(function (item) { return item.id === id; }) || { name: 'Unassigned', initials: '--', role: '', avatar: '' }; }
+      function project(id) { return data.projects.find(function (item) { return item.id === id; }) || { name: 'No project', tone: '#edf0e9', ink: '#657169', category: 'RESEARCH' }; }
+      function activeProject() { var chosen = project(data.activeProjectId); if (chosen.archived) { chosen = data.projects.find(function (item) { return !item.archived; }) || chosen; data.activeProjectId = chosen.id; } return chosen; }
+      function avatarMarkup(id, size) { var member = person(id); return '<span class="avatar ' + (size || 'small') + ' ' + escapeHtml(member.avatar || '') + '" aria-label="' + escapeHtml(member.name) + '">' + escapeHtml(member.initials) + '</span>'; }
+      function dateLabel(value, withYear) {
+        if (!value) return 'No date';
+        var d = new Date(value + 'T12:00:00');
+        if (Number.isNaN(d.getTime())) return value;
+        return new Intl.DateTimeFormat(undefined, { month: 'short', day: 'numeric', year: withYear ? 'numeric' : undefined }).format(d);
+      }
+      function monthDay(value) { if (!value) return ['—','']; var d = new Date(value + 'T12:00:00'); return [new Intl.DateTimeFormat(undefined,{day:'2-digit'}).format(d),new Intl.DateTimeFormat(undefined,{month:'short'}).format(d)]; }
+      function statusClass(value) { return String(value || '').toLowerCase().replace(/[^a-z]+/g, '-').replace(/^-|-$/g, ''); }
+      function statusPill(value) { return '<span class="status-pill ' + statusClass(value) + '">' + escapeHtml(value) + '</span>'; }
+      function tag(text) { return '<span class="tag-pill">' + escapeHtml(text) + '</span>'; }
+      function saveActivity(type, title, detail, projectId, by) {
+        data.activity.unshift({ id: uid('a'), type: type, title: title, detail: detail, projectId: projectId || data.activeProjectId, by: by || 'm-maya', time: 'Just now' });
+        if (data.extras) { data.extras.history.unshift({ id: uid('h'), title: title, detail: detail, projectId: projectId || data.activeProjectId, by: by || 'm-maya', at: new Date().toISOString() }); data.extras.history = data.extras.history.slice(0,150); }
+        persist();
+      }
+      function showToast(message) {
+        var toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = icon('check') + '<span>' + escapeHtml(message) + '</span>';
+        ui.toasts.appendChild(toast);
+        window.setTimeout(function () { toast.remove(); }, 3300);
+      }
+      function plural(n, word) { return n + ' ' + word + (n === 1 ? '' : 's'); }
+      function pageHeading(eyebrow, title, subtitle, action) {
+        return '<div class="page-heading"><div><div class="eyebrow"><span class="eyebrow-dot"></span>' + escapeHtml(eyebrow) + '</div><h1>' + title + '</h1><p>' + escapeHtml(subtitle) + '</p></div>' + (action || '') + '</div>';
+      }
+      function addButton(entity, label) { return '<button class="button button-primary" type="button" data-action="compose" data-entity="' + entity + '">' + icon('plus') + escapeHtml(label) + '</button>'; }
+      function avatarStack(ids) { return '<div class="team-strip" aria-label="' + ids.length + ' collaborators">' + ids.slice(0, 4).map(function (id) { return avatarMarkup(id, 'small'); }).join('') + (ids.length > 4 ? '<span class="avatar small">+' + (ids.length - 4) + '</span>' : '') + '</div>'; }
+      function projectMembers(id) { var ids = data.members.filter(function (member) { return member.id === project(id).owner || data.tasks.some(function (task) { return task.projectId === id && task.owner === member.id; }); }).map(function (member) { return member.id; }); return ids.length ? ids : ['m-maya']; }
+      function setView(name) {
+        if (!viewNames[name]) return;
+        if (currentView !== name) { activeFilter = 'all'; tableQuery = ''; }
+        currentView = name;
+        document.querySelectorAll('.nav-item[data-view]').forEach(function (button) {
+          if (button.dataset.view === name) button.setAttribute('aria-current', 'page'); else button.removeAttribute('aria-current');
+        });
+        ui.breadcrumb.textContent = viewNames[name];
+        ui.sidebar.classList.remove('is-open');
+        ui.scrim.classList.remove('is-visible');
+        ui.view.innerHTML = renderers[name]();
+        ui.view.classList.remove('view-enter');
+        void ui.view.offsetWidth;
+        ui.view.classList.add('view-enter');
+        document.title = viewNames[name] + ' · Morrow Research';
+        updateCounts();
+        ui.popover.hidden = true;
+      }
+      function renderOverview() {
+        var p = activeProject();
+        var active = data.projects.filter(function (item) { return !item.archived && item.progress < 100; }).length;
+        var openTasks = data.tasks.filter(function (item) { return item.status !== 'done'; }).length;
+        var reviewed = data.literature.filter(function (item) { return item.status === 'Reviewed'; }).length;
+        var cards = [
+          { label: 'Active projects', value: active, note: '+1 started this month', icon: 'folder', trend: 'Across 3 workstreams' },
+          { label: 'Papers in library', value: data.literature.length, note: reviewed + ' fully reviewed', icon: 'book', trend: 'Reading is moving' },
+          { label: 'Open tasks', value: openTasks, note: '4 due this week', icon: 'task', trend: 'Team-wide workload' },
+          { label: 'Shared findings', value: data.findings.length, note: '+3 captured this week', icon: 'spark', trend: 'Across your projects' }
+        ];
+        var metricHtml = cards.map(function (m, i) { return '<article class="card metric-card stagger-in" style="--index:' + i + '"><div class="metric-top"><span>' + escapeHtml(m.label) + '</span><span class="metric-icon">' + icon(m.icon) + '</span></div><div class="metric-value-row"><strong class="metric-value">' + escapeHtml(m.value) + '</strong><span class="metric-trend">↗ ' + escapeHtml(i === 2 ? '2 done today' : 'On track') + '</span></div><div class="metric-foot">' + escapeHtml(m.trend) + '</div></article>'; }).join('');
+        var bars = [38,62,51,78,57,88,68].map(function (height, i) { return '<div class="chart-day"><div class="chart-bars"><span class="chart-bar" style="--height:' + height + '%;--index:' + i + '"></span><span class="chart-bar secondary" style="--height:' + Math.max(19,height - 27) + '%;--index:' + (i + 2) + '"></span></div><label>' + ['M','T','W','T','F','S','S'][i] + '</label></div>'; }).join('');
+        var milestoneRows = [
+          { date: dateInput(2), name: 'Cohort criteria review', note: 'Sleep & memory · Aryan + Ishita' },
+          { date: dateInput(5), name: 'Pilot analysis checkpoint', note: 'Sleep & memory · Jiya' },
+          { date: dateInput(9), name: 'Fieldwork week 4 review', note: 'Air quality · Piyush + Gurpreet' }
+        ].map(function (item) { var md = monthDay(item.date); return '<div class="milestone"><div class="milestone-date"><strong>' + md[0] + '</strong><span>' + md[1] + '</span></div><div class="milestone-copy"><strong>' + escapeHtml(item.name) + '</strong><span>' + escapeHtml(item.note) + '</span></div>' + icon('arrow') + '</div>'; }).join('');
+        var projectRows = data.projects.filter(function (item) { return !item.archived; }).slice(0, 3).map(function (item, i) {
+          return '<div class="project-row stagger-in" style="--index:' + i + '" role="button" tabindex="0" data-action="select-project" data-id="' + escapeHtml(item.id) + '"><span class="project-mark" style="--project-tone:' + escapeHtml(item.tone) + ';--project-ink:' + escapeHtml(item.ink) + '">' + escapeHtml(item.name.charAt(0)) + '</span><span class="project-row-main"><strong>' + escapeHtml(item.name) + '</strong><span>' + escapeHtml(item.phase) + '</span></span><span class="mini-progress" aria-label="' + item.progress + ' percent complete"><span style="--progress:' + item.progress + '%"></span></span></div>';
+        }).join('');
+        var activityRows = data.activity.slice(0, 3).map(activityMarkup).join('');
+        var fullDate = new Intl.DateTimeFormat(undefined, { weekday: 'long', month: 'long', day: 'numeric' }).format(today);
+        return '<div class="view-root">' +
+          '<div class="welcome-row">' + pageHeading('RESEARCH WORKSPACE · SAMPLE DATA', 'Your work, <em>in focus.</em>', 'A clear view of the questions, evidence, and next steps your team is moving forward.') + '<div class="workspace-label">' + icon('calendar') + escapeHtml(fullDate) + '</div></div>' +
+          '<section class="hero-project"><div class="hero-project-copy"><div class="eyebrow"><span class="eyebrow-dot"></span> FEATURED PROJECT · ' + escapeHtml(p.category) + '</div><h2>' + escapeHtml(p.name) + '</h2><p>' + escapeHtml(p.focus) + '</p><div class="hero-project-meta">' + tag(p.phase) + tag('PI: ' + person(p.owner).name) + tag('Due ' + dateLabel(p.due)) + '</div></div><div class="hero-project-side"><div><div class="hero-line-completion" role="progressbar" aria-label="Project completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + p.progress + '"><div class="hero-line-track"><span style="width:' + p.progress + '%"></span></div><div class="progress-caption">Project completion</div></div></div><div class="hero-project-actions"><button class="button button-light" type="button" data-action="select-project" data-id="' + escapeHtml(p.id) + '">' + icon('arrow') + 'Open project</button></div></div></section>' +
+          '<section class="metrics-grid" aria-label="Workspace metrics">' + metricHtml + '</section>' +
+          '<div class="dashboard-grid"><div class="dashboard-column">' +
+            '<section><div class="section-title"><div><h2>Research momentum</h2><p>Shared work across your projects this week</p></div><button class="text-link" type="button" data-view="timeline">View timeline ' + icon('arrow') + '</button></div><div class="card panel momentum-panel"><div class="chart-head"><div class="chart-total"><strong>32</strong>actions this week</div><span class="date-pill">' + icon('calendar') + 'Last 7 days ' + icon('chevron') + '</span></div><div class="chart-area" role="img" aria-label="Activity chart for Monday to Sunday, with a rise in project activity toward Friday">' + bars + '</div><div class="chart-legend"><span><i class="legend-dot"></i>Research activity</span><span><i class="legend-dot light"></i>Completed tasks</span></div></div></section>' +
+            '<section><div class="section-title"><div><h2>Projects in motion</h2><p>Your team has ' + data.projects.length + ' active research threads</p></div><button class="text-link" type="button" data-view="projects">All projects ' + icon('arrow') + '</button></div><div class="project-list">' + projectRows + '</div></section>' +
+          '</div><div class="dashboard-column secondary">' +
+            '<section><div class="section-title"><div><h2>Next milestones</h2><p>Small steps, visible progress</p></div><button class="text-link" type="button" data-view="tasks">Tasks ' + icon('arrow') + '</button></div><div class="card panel"><div class="milestone-list">' + milestoneRows + '</div></div></section>' +
+            '<section><div class="section-title"><div><h2>Team pulse</h2><p>Latest from your collaborators</p></div><button class="text-link" type="button" data-view="team">Meet the team ' + icon('arrow') + '</button></div><div class="card panel"><div class="activity-list">' + activityRows + '</div><button class="button button-secondary" style="width:100%;margin-top:8px" type="button" data-view="timeline">Open activity timeline ' + icon('arrow') + '</button></div></section>' +
+          '</div></div></div>';
+      }
+      function activityIcon(type) { return type === 'literature' ? 'book' : type === 'task' ? 'check' : type === 'experiment' ? 'flask' : type === 'project' ? 'folder' : 'spark'; }
+      function activityMarkup(item) {
+        var who = person(item.by);
+        return '<div class="activity-item"><span class="activity-mark">' + icon(activityIcon(item.type)) + '</span><div class="activity-copy"><p><strong>' + escapeHtml(who.name.split(' ')[0]) + '</strong> ' + escapeHtml(item.title) + '</p><time>' + escapeHtml(item.detail) + ' · ' + escapeHtml(item.time) + '</time></div></div>';
+      }
+      function renderProjects() {
+        var p = activeProject();
+        var activeProjects = data.projects.filter(function (item) { return !item.archived; });
+        var cards = activeProjects.map(function (item, i) {
+          return '<article class="card card-hover project-card stagger-in ' + (item.id === p.id ? 'selected' : '') + '" style="--index:' + i + '" role="button" tabindex="0" data-action="select-project" data-id="' + escapeHtml(item.id) + '"><div class="project-card-top"><span class="project-mark" style="--project-tone:' + escapeHtml(item.tone) + ';--project-ink:' + escapeHtml(item.ink) + '">' + escapeHtml(item.name.charAt(0)) + '</span>' + statusPill(item.progress === 100 ? 'Complete' : 'Active') + '</div><h3>' + escapeHtml(item.name) + '</h3><p class="project-focus">' + escapeHtml(item.focus) + '</p><span class="project-phase">' + escapeHtml(item.phase) + '</span><div class="project-progress-row"><span class="mini-progress"><span style="--progress:' + item.progress + '%"></span></span></div><div class="project-card-footer"><span>Due ' + dateLabel(item.due) + '</span>' + avatarStack(projectMembers(item.id)) + '</div></article>';
+        }).join('');
+        var relLit = data.literature.filter(function (x) { return x.projectId === p.id; }).length;
+        var relTasks = data.tasks.filter(function (x) { return x.projectId === p.id && x.status !== 'done'; }).length;
+        var relExp = data.experiments.filter(function (x) { return x.projectId === p.id; }).length;
+        return '<div class="view-root">' + pageHeading('PROJECTS / ' + activeProjects.length + ' ACTIVE', 'Research has a <em>home.</em>', 'Keep each question connected to the people, evidence, and work that move it forward.', addButton('project','New project')) +
+          '<div class="project-grid">' + cards + '</div>' +
+          '<section class="card project-detail"><div><div class="eyebrow"><span class="eyebrow-dot"></span> SELECTED PROJECT · ' + escapeHtml(p.category) + '</div><h2 style="margin:0;font:500 29px/1.05 var(--serif)">' + escapeHtml(p.name) + '</h2><p style="max-width:680px;margin:8px 0 0;color:var(--muted);font-size:10px">' + escapeHtml(p.focus) + '</p><div class="detail-meta">' + tag(p.phase) + tag('Lead: ' + person(p.owner).name) + tag('Milestone ' + dateLabel(p.due)) + '</div><div style="display:flex;align-items:center;gap:10px"><span class="mini-progress" role="progressbar" aria-label="Project completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + p.progress + '" style="width:min(310px,55%)"><span style="--progress:' + p.progress + '%"></span></span></div><div style="display:flex;gap:8px;margin-top:15px;flex-wrap:wrap"><button class="button button-secondary" type="button" data-view="literature">' + icon('book') + 'Open literature</button><button class="button button-secondary" type="button" data-view="tasks">' + icon('task') + 'View tasks</button><button class="button button-secondary" type="button" data-action="compose" data-entity="finding">' + icon('spark') + 'Capture finding</button></div></div><div class="detail-stats"><div class="detail-stat"><strong>' + relLit + '</strong><span>Literature records</span></div><div class="detail-stat"><strong>' + relTasks + '</strong><span>Open tasks</span></div><div class="detail-stat"><strong>' + relExp + '</strong><span>Experiments</span></div></div></section></div>';
+      }
+      function renderLiterature() {
+        var query = tableQuery.trim().toLowerCase();
+        var rows = data.literature.filter(function (item) {
+          var matches = (item.title + ' ' + item.authors + ' ' + item.source + ' ' + item.tags.join(' ')).toLowerCase().indexOf(query) !== -1;
+          var filter = activeFilter === 'all' || (activeFilter === 'saved' ? item.saved : item.status.toLowerCase() === activeFilter);
+          return matches && filter;
+        }).map(function (item) {
+          var p = project(item.projectId);
+          return '<tr><td><div class="record-title">' + escapeHtml(item.title) + '</div><div class="record-sub">' + escapeHtml(item.authors) + '</div></td><td class="source-cell">' + escapeHtml(item.source) + '</td><td>' + escapeHtml(item.year) + '</td><td>' + statusPill(item.status) + '</td><td>' + tag(p.category) + '</td><td><button class="saved-button" type="button" data-action="toggle-saved" data-id="' + escapeHtml(item.id) + '" aria-pressed="' + item.saved + '" aria-label="' + (item.saved ? 'Remove from saved papers' : 'Save paper') + '">' + icon('spark') + '</button></td></tr>';
+        }).join('');
+        return '<div class="view-root">' + pageHeading('LIBRARY / LITERATURE', 'Evidence, <em>in context.</em>', 'Keep sources connected to the questions and projects they inform.', addButton('literature','Add paper')) +
+          '<div class="toolbar"><div class="toolbar-left"><div class="filter-tabs" role="group" aria-label="Filter literature">' + filterButton('all','All papers') + filterButton('to read','To read') + filterButton('reading','Reading') + filterButton('saved','Saved') + '</div></div><div class="toolbar-right"><label class="input-search">' + icon('search') + '<span class="sr-only">Filter papers</span><input type="search" id="literatureSearch" placeholder="Find a paper or author..." value="' + escapeHtml(tableQuery) + '"></label><span class="date-pill">' + data.literature.length + ' records</span></div></div>' +
+          '<section class="card table-shell"><div class="table-scroll"><table><caption class="sr-only">Research literature records and review status</caption><thead><tr><th>Paper / authors</th><th>Publication</th><th>Year</th><th>Reading status</th><th>Project</th><th><span class="sr-only">Save</span></th></tr></thead><tbody>' + (rows || '<tr><td colspan="6"><div class="empty-state"><h3>No papers found</h3><p>Adjust the search or add a source to your shared library.</p></div></td></tr>') + '</tbody></table></div></section><div class="filter-note" style="margin-top:12px">Demo workspace records · replace these with your team’s verified sources.</div></div>';
+      }
+      function filterButton(key, label) { return '<button class="filter-tab" type="button" data-action="filter" data-filter="' + key + '" aria-pressed="' + (activeFilter === key) + '">' + label + '</button>'; }
+      function renderTasks() {
+        var search = tableQuery.trim().toLowerCase();
+        var sections = [
+          { id: 'todo', label: 'To do', dot: '', statuses: ['todo'] },
+          { id: 'progress', label: 'In progress', dot: 'progress', statuses: ['progress'] },
+          { id: 'done', label: 'Done', dot: 'done', statuses: ['done'] }
+        ];
+        var content = sections.map(function (section) {
+          var items = data.tasks.filter(function (task) {
+            var matches = (task.title + ' ' + task.description + ' ' + person(task.owner).name).toLowerCase().indexOf(search) !== -1;
+            var projectMatches = activeFilter === 'all' || task.projectId === activeFilter;
+            return task.status === section.id && matches && projectMatches;
+          });
+          var itemHtml = items.map(function (task, i) {
+            return '<article class="task-card stagger-in" style="--index:' + i + '"><div class="task-card-top"><button class="task-check" type="button" data-action="toggle-task" data-id="' + escapeHtml(task.id) + '" aria-pressed="' + (task.status === 'done') + '" aria-label="' + (task.status === 'done' ? 'Reopen task' : 'Mark task complete') + '">' + icon('check') + '</button><span class="task-title ' + (task.status === 'done' ? 'done' : '') + '">' + escapeHtml(task.title) + '</span>' + '<span class="priority-pill ' + task.priority.toLowerCase() + '">' + escapeHtml(task.priority) + '</span></div><p>' + escapeHtml(task.description) + '</p><div class="task-meta"><span class="task-due">' + icon('calendar') + escapeHtml(dateLabel(task.due)) + '</span><span class="task-owner">' + avatarMarkup(task.owner,'xsmall') + escapeHtml(person(task.owner).name.split(' ')[0]) + '</span></div></article>';
+          }).join('');
+          return '<section class="task-column"><div class="task-column-head"><strong><i class="column-dot ' + section.dot + '"></i>' + section.label + '</strong><span class="column-count">' + items.length + '</span></div>' + (itemHtml || '<div style="padding:16px 5px;color:#96a099;font-size:9px">Nothing here yet</div>') + '</section>';
+        }).join('');
+        var projectOptions = '<button class="filter-tab" type="button" data-action="filter" data-filter="all" aria-pressed="' + (activeFilter === 'all') + '">All projects</button>' + data.projects.map(function (p) { return '<button class="filter-tab" type="button" data-action="filter" data-filter="' + escapeHtml(p.id) + '" aria-pressed="' + (activeFilter === p.id) + '">' + escapeHtml(p.name.split(' ').slice(0,2).join(' ')) + '</button>'; }).join('');
+        return '<div class="view-root">' + pageHeading('WORK / TASKS', 'Make the next step <em>visible.</em>', 'Shared responsibilities, clear ownership, and due dates your team can trust.', addButton('task','Add task')) +
+          '<div class="toolbar"><div class="toolbar-left"><div class="filter-tabs" role="group" aria-label="Filter tasks by project">' + projectOptions + '</div></div><div class="toolbar-right"><label class="input-search">' + icon('search') + '<span class="sr-only">Search tasks</span><input type="search" id="taskSearch" placeholder="Search tasks..." value="' + escapeHtml(tableQuery) + '"></label></div></div><div class="task-columns">' + content + '</div></div>';
+      }
+      function renderExperiments() {
+        var query = tableQuery.trim().toLowerCase();
+        var items = data.experiments.filter(function (item) { return (item.name + ' ' + item.protocol + ' ' + project(item.projectId).name).toLowerCase().indexOf(query) !== -1; });
+        var cards = items.map(function (item, i) {
+          return '<article class="card card-hover experiment-card stagger-in" style="--index:' + i + '"><div class="experiment-top"><span class="card-icon">' + icon('flask') + '</span>' + statusPill(item.status) + '</div><h3>' + escapeHtml(item.name) + '</h3><p>' + escapeHtml(project(item.projectId).name) + '</p><div class="protocol-preview">' + escapeHtml(item.protocol) + '</div><div class="experiment-footer"><span>' + escapeHtml(item.participants) + '</span><strong>' + escapeHtml(person(item.owner).name.split(' ')[0]) + '</strong></div><div style="display:flex;align-items:center;justify-content:space-between;margin-top:9px;color:#9aa39d;font-size:8px"><span>' + escapeHtml(item.updated) + '</span><button class="text-link" type="button" data-action="edit-experiment-status" data-id="' + escapeHtml(item.id) + '">Update status ' + icon('arrow') + '</button></div></article>';
+        }).join('');
+        return '<div class="view-root">' + pageHeading('RESEARCH / EXPERIMENTS', 'From protocol to <em>evidence.</em>', 'Track active studies, methods, participants, and the details your team needs to reproduce the work.', addButton('experiment','Log experiment')) +
+          '<div class="toolbar"><div class="toolbar-left"><span class="date-pill">' + data.experiments.length + ' studies across ' + data.projects.length + ' projects</span></div><div class="toolbar-right"><label class="input-search">' + icon('search') + '<span class="sr-only">Search experiments</span><input type="search" id="experimentSearch" placeholder="Search experiments..." value="' + escapeHtml(tableQuery) + '"></label></div></div><div class="experiment-grid">' + (cards || '<div class="card empty-state"><h3>No experiments yet</h3><p>Log a protocol or study to make it visible to your collaborators.</p></div>') + '</div></div>';
+      }
+      function renderFindings() {
+        var query = tableQuery.trim().toLowerCase();
+        var items = data.findings.filter(function (item) { return (item.title + ' ' + item.summary + ' ' + project(item.projectId).name).toLowerCase().indexOf(query) !== -1; });
+        var cards = items.map(function (item, i) {
+          return '<article class="card card-hover finding-card stagger-in" style="--index:' + i + ';--finding-accent:' + escapeHtml(item.accent || '#7ea285') + '"><div class="finding-top"><span class="eyebrow" style="margin:0">' + icon('spark') + escapeHtml(item.category) + '</span><button class="icon-button" style="width:30px;height:30px" type="button" data-action="copy-finding" data-id="' + escapeHtml(item.id) + '" aria-label="Copy finding"><svg class="icon" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button></div><h3>' + escapeHtml(item.title) + '</h3><blockquote class="finding-quote">“' + escapeHtml(item.summary) + '”</blockquote><div class="finding-meta"><span>' + escapeHtml(project(item.projectId).name) + '</span><span class="finding-author">' + avatarMarkup(item.author,'xsmall') + escapeHtml(person(item.author).name.split(' ')[0]) + ' · ' + dateLabel(item.date) + '</span></div></article>';
+        }).join('');
+        return '<div class="view-root">' + pageHeading('RESEARCH / FINDINGS', 'Keep what you <em>learn.</em>', 'A shared record of emerging patterns, useful surprises, and evidence that changes the next question.', addButton('finding','Capture finding')) +
+          '<div class="toolbar"><div class="toolbar-left"><div class="date-pill">' + icon('spark') + data.findings.length + ' shared notes</div></div><div class="toolbar-right"><label class="input-search">' + icon('search') + '<span class="sr-only">Search findings</span><input type="search" id="findingSearch" placeholder="Search findings..." value="' + escapeHtml(tableQuery) + '"></label></div></div><div class="finding-grid">' + (cards || '<div class="card empty-state"><h3>No findings yet</h3><p>Capture an observation so the whole team can build on it.</p></div>') + '</div></div>';
+      }
+      function renderTimeline() {
+        var typeNames = { all: 'All activity', project: 'Projects', literature: 'Literature', task: 'Tasks', experiment: 'Experiments', finding: 'Findings' };
+        var events = data.activity.filter(function (item) { return activeFilter === 'all' || item.type === activeFilter; });
+        var rows = events.map(function (item, i) {
+          return '<article class="timeline-item stagger-in" style="--index:' + i + '"><time class="timeline-date">' + escapeHtml(item.time) + '</time><span class="timeline-node">' + icon(activityIcon(item.type)) + '</span><div class="timeline-copy"><strong>' + escapeHtml(item.title) + '</strong><p>' + escapeHtml(item.detail) + ' · ' + escapeHtml(project(item.projectId).name) + '</p><div class="timeline-by">' + avatarMarkup(item.by,'xsmall') + escapeHtml(person(item.by).name) + '</div></div></article>';
+        }).join('');
+        return '<div class="view-root">' + pageHeading('WORKSPACE / PROJECT TIMELINE', 'Progress, <em>with a record.</em>', 'A living history of decisions, evidence, and work across the workspace.') +
+          '<div class="toolbar"><div class="toolbar-left"><div class="filter-tabs" role="group" aria-label="Filter timeline">' + Object.keys(typeNames).map(function (key) { return filterButton(key,typeNames[key]); }).join('') + '</div></div><div class="toolbar-right"><span class="date-pill">' + events.length + ' updates</span></div></div><div class="card panel"><div class="timeline">' + (rows || '<div class="empty-state"><h3>No updates in this view</h3><p>Changes from your team will appear here as the research progresses.</p></div>') + '</div></div></div>';
+      }
+      function renderTeam() {
+        var members = data.members.map(function (member, i) {
+          var assigned = data.tasks.filter(function (task) { return task.owner === member.id && task.status !== 'done'; }).length;
+          var projectsCount = data.projects.filter(function (p) { return p.owner === member.id || data.tasks.some(function (t) { return t.owner === member.id && t.projectId === p.id; }); }).length;
+          return '<article class="card card-hover member-card stagger-in" style="--index:' + i + '">' + avatarMarkup(member.id,'') + '<h3>' + escapeHtml(member.name) + '</h3><div class="member-role">' + escapeHtml(member.role) + '</div><a class="member-email" href="mailto:' + escapeHtml(member.email) + '">' + escapeHtml(member.email) + '</a><div class="member-load"><span>' + plural(projectsCount,'project') + '</span><strong>' + plural(assigned,'open task') + '</strong></div></article>';
+        }).join('');
+        return '<div class="view-root">' + pageHeading('WORKSPACE / PEOPLE', 'Better work, <em>together.</em>', 'Know who is contributing, what they own, and where their expertise is focused.', addButton('member','Invite teammate')) +
+          '<div class="card panel" style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px"><div><strong style="display:block;font:500 21px var(--serif)">Mind &amp; Memory Lab</strong><span style="display:block;margin-top:4px;color:var(--muted);font-size:9px">A shared space for careful questions and reproducible research.</span></div>' + avatarStack(data.members.map(function (x) { return x.id; })) + '</div><div class="team-grid">' + members + '</div></div>';
+      }
+      var renderers = { overview: renderOverview, projects: renderProjects, literature: renderLiterature, tasks: renderTasks, experiments: renderExperiments, findings: renderFindings, timeline: renderTimeline, team: renderTeam, researchTools: renderResearchTools };
+      function updateCounts() {
+        document.getElementById('projectCount').textContent = data.projects.filter(function (p) { return !p.archived; }).length;
+        document.getElementById('paperCount').textContent = data.literature.length;
+        document.getElementById('taskCount').textContent = data.tasks.filter(function (t) { return t.status !== 'done'; }).length;
+      }
+      function composeMenuHtml() {
+        var choices = [
+          ['project','folder','New project','Start a research workstream'],
+          ['literature','book','Add literature','Save a paper or source'],
+          ['task','task','Create task','Assign a clear next step'],
+          ['experiment','flask','Log experiment','Record a protocol or study'],
+          ['finding','spark','Capture finding','Share an insight with the team'],
+          ['member','team','Invite teammate','Add a collaborator locally']
+        ];
+        return '<div class="popover-panel"><div class="popover-heading">Create in your workspace</div>' + choices.map(function (c) { return '<button class="popover-item" type="button" data-action="compose" data-entity="' + c[0] + '">' + icon(c[1]) + '<span>' + c[2] + '</span><small>' + c[3] + '</small></button>'; }).join('') + '<div class="popover-sep"></div><button class="popover-item" type="button" data-action="export">' + icon('download') + '<span>Export workspace</span><small>JSON</small></button></div>';
+      }
+      function workspaceMenuHtml() {
+        return '<div class="popover-panel" style="right:auto;width:270px"><div class="popover-heading">Choose a project focus</div>' + data.projects.filter(function (p) { return !p.archived; }).map(function (p) { return '<button class="popover-item" type="button" data-action="switch-project" data-id="' + escapeHtml(p.id) + '">' + '<span class="project-mark" style="width:30px;height:30px;--project-tone:' + escapeHtml(p.tone) + ';--project-ink:' + escapeHtml(p.ink) + '">' + escapeHtml(p.name.charAt(0)) + '</span><span>' + escapeHtml(p.name) + '</span>' + (p.id === data.activeProjectId ? '<small>Active</small>' : '') + '</button>'; }).join('') + '</div>';
+      }
+      function activityPopoverHtml() {
+        return '<div class="popover-panel"><div class="popover-heading">Recent team activity</div>' + data.activity.slice(0,4).map(function (a) { return '<div class="popover-item" style="cursor:default">' + '<span class="activity-mark" style="width:29px;height:29px">' + icon(activityIcon(a.type)) + '</span><span>' + escapeHtml(a.title) + '<small style="display:block;margin-top:3px">' + escapeHtml(person(a.by).name.split(' ')[0]) + ' · ' + escapeHtml(a.time) + '</small></span></div>'; }).join('') + '<button class="popover-item" type="button" data-view="timeline">' + icon('arrow') + '<span>See all activity</span></button></div>';
+      }
+      function profileMenuHtml() {
+        return '<div class="popover-panel" style="top:auto;right:auto;left:16px;bottom:15px;width:230px"><div class="popover-heading">Workspace options</div><button class="popover-item" type="button" data-action="export">' + icon('download') + '<span>Export workspace data</span></button><button class="popover-item" type="button" data-action="reset">' + icon('alert') + '<span>Restore demo workspace</span></button></div>';
+      }
+      function openPopover(html) { ui.popover.innerHTML = html; ui.popover.hidden = false; }
+      function closePopover() { ui.popover.hidden = true; ui.popover.innerHTML = ''; document.querySelectorAll('[aria-expanded="true"][data-action]').forEach(function (button) { button.setAttribute('aria-expanded','false'); }); }
+      function projectSelect() {
+        return '<select name="projectId" required>' + data.projects.filter(function (p) { return !p.archived; }).map(function (p) { return '<option value="' + escapeHtml(p.id) + '"' + (p.id === data.activeProjectId ? ' selected' : '') + '>' + escapeHtml(p.name) + '</option>'; }).join('') + '</select>';
+      }
+      function memberSelect(name, selected) {
+        return '<select name="' + name + '" required>' + data.members.map(function (m) { return '<option value="' + escapeHtml(m.id) + '"' + (m.id === selected ? ' selected' : '') + '>' + escapeHtml(m.name) + '</option>'; }).join('') + '</select>';
+      }
+      function field(label, name, control, full) { return '<div class="field ' + (full ? 'full' : '') + '"><label for="field-' + name + '">' + label + '</label>' + control.replace('<input ', '<input id="field-' + name + '" ').replace('<select ', '<select id="field-' + name + '" ').replace('<textarea ', '<textarea id="field-' + name + '" ') + '</div>'; }
+      function input(name, placeholder, required, type, value) { return '<input type="' + (type || 'text') + '" name="' + name + '" placeholder="' + escapeHtml(placeholder || '') + '"' + (required ? ' required' : '') + (value ? ' value="' + escapeHtml(value) + '"' : '') + '>'; }
+      function textarea(name, placeholder, required) { return '<textarea name="' + name + '" placeholder="' + escapeHtml(placeholder || '') + '"' + (required ? ' required' : '') + '></textarea>'; }
+      function select(name, options) { return '<select name="' + name + '" required>' + options.map(function (o) { return '<option value="' + escapeHtml(o[0]) + '">' + escapeHtml(o[1]) + '</option>'; }).join('') + '</select>'; }
+      function composeForm(entity) {
+        var specs = {
+          project: { title: 'Start a research project', intro: 'Create a shared home for a new question.', hint: 'Projects are saved in this browser workspace.', fields: [
+            ['Project name','name',input('name','e.g. Social connection & wellbeing',true),true],
+            ['Research focus','focus',textarea('focus','What question will this project explore?',true),true],
+            ['Project lead','owner',memberSelect('owner','m-maya'),false],
+            ['Current phase','phase',select('phase',[['Question framing','Question framing'],['Literature review','Literature review'],['Protocol design','Protocol design'],['Data collection','Data collection'],['Analysis','Analysis'],['Writing','Writing']]),false],
+            ['Target milestone','due',input('due','',true,'date',dateInput(30)),false]
+          ]},
+          literature: { title: 'Add a literature record', intro: 'Keep a source connected to the work it informs.', hint: 'Add verified citation details from your source manager or paper.', fields: [
+            ['Paper title','title',input('title','Title of the paper or source',true),true],
+            ['Authors','authors',input('authors','Author names',true),false],
+            ['Publication','source',input('source','Journal, archive, or publisher',true),false],
+            ['Year','year',input('year','2025',true,'number'),false],
+            ['Project','projectId',projectSelect(),false],
+            ['Reading status','status',select('status',[['To read','To read'],['Reading','Reading'],['Reviewed','Reviewed']]),false]
+          ]},
+          task: { title: 'Create a team task', intro: 'Make the next step visible and owned.', hint: 'Tasks are shared across the selected project in this browser workspace.', fields: [
+            ['Task title','title',input('title','What needs to happen?',true),true],
+            ['Details','description',textarea('description','Add context, acceptance criteria, or a link.',false),true],
+            ['Project','projectId',projectSelect(),false],
+            ['Owner','owner',memberSelect('owner','m-maya'),false],
+            ['Due date','due',input('due','',true,'date',dateInput(7)),false],
+            ['Priority','priority',select('priority',[['Medium','Medium'],['High','High'],['Low','Low']]),false],
+            ['Status','status',select('status',[['todo','To do'],['progress','In progress'],['done','Done']]),false]
+          ]},
+          experiment: { title: 'Log an experiment', intro: 'Keep the protocol and its progress close together.', hint: 'Use the protocol note for enough detail to reproduce the study.', fields: [
+            ['Experiment name','name',input('name','e.g. Retrieval cue pilot',true),true],
+            ['Project','projectId',projectSelect(),false],
+            ['Study lead','owner',memberSelect('owner','m-noor'),false],
+            ['Status','status',select('status',[['Planning','Planning'],['Running','Running'],['Analyzing','Analyzing'],['Complete','Complete']]),false],
+            ['Participants / sample','participants',input('participants','e.g. 20 planned',true),false],
+            ['Protocol summary','protocol',textarea('protocol','Procedure, materials, measures, or preregistration reference.',true),true]
+          ]},
+          finding: { title: 'Capture a research finding', intro: 'Preserve the observation while it is still fresh.', hint: 'Label preliminary results clearly; a finding can be a question as well as a conclusion.', fields: [
+            ['Finding title','title',input('title','A short, specific observation',true),true],
+            ['Project','projectId',projectSelect(),false],
+            ['Category','category',select('category',[['PILOT INSIGHT','Pilot insight'],['RESULT','Result'],['FIELD NOTE','Field note'],['EARLY SIGNAL','Early signal'],['OPEN QUESTION','Open question']]),false],
+            ['Observation','summary',textarea('summary','What did the team observe? Include context and limitations.',true),true]
+          ]},
+          member: { title: 'Invite a teammate', intro: 'Add a collaborator to this local demo workspace.', hint: 'This demo does not send an email. The member is added only in this browser.', fields: [
+            ['Full name','name',input('name','Collaborator name',true),false],
+            ['Email','email',input('email','name@example.edu',true,'email'),false],
+            ['Role','role',input('role','e.g. Research assistant',true),false]
+          ]}
+        };
+        var spec = specs[entity];
+        if (!spec) return;
+        var fieldsHtml = spec.fields.map(function (f) { return field(f[0],f[1],f[2],f[3]); }).join('');
+        ui.modal.classList.remove('search-modal');
+        ui.modal.setAttribute('aria-hidden','false');
+        ui.modalCard.innerHTML = '<div class="modal-head"><div><h2 id="modalTitle">' + escapeHtml(spec.title) + '</h2><p>' + escapeHtml(spec.intro) + '</p></div><button class="icon-button" type="button" data-action="close-modal" aria-label="Close dialog">' + icon('close') + '</button></div><div class="modal-body"><form id="recordForm" data-entity="' + entity + '"><div class="form-grid">' + fieldsHtml + '</div><div class="modal-hint">' + icon('alert') + '<span>' + escapeHtml(spec.hint) + '</span></div><div class="modal-actions"><button class="button button-secondary" type="button" data-action="close-modal">Cancel</button><button class="button button-primary" type="submit">Save to workspace ' + icon('arrow') + '</button></div></form></div>';
+        ui.modal.hidden = false;
+        window.requestAnimationFrame(function () { var target = ui.modal.querySelector('input,select,textarea'); if (target) target.focus(); });
+      }
+      function openSearch() {
+        ui.modal.classList.add('search-modal');
+        ui.modal.setAttribute('aria-hidden','false');
+        ui.modalCard.innerHTML = '<div class="modal-head"><div><h2 id="modalTitle">Search your workspace</h2><p>Find projects, sources, experiments, tasks, and findings.</p></div><button class="icon-button" type="button" data-action="close-modal" aria-label="Close search">' + icon('close') + '</button></div><label class="search-large">' + icon('search') + '<span class="sr-only">Search all workspace records</span><input id="globalSearch" type="search" placeholder="Try “sleep”, “protocol”, or a collaborator..." autocomplete="off"></label><div class="search-results" id="searchResults"><div class="search-empty">Start typing to search the workspace.</div></div>';
+        ui.modal.hidden = false;
+        window.requestAnimationFrame(function () { document.getElementById('globalSearch').focus(); });
+      }
+      function closeModal() { ui.modal.hidden = true; ui.modal.setAttribute('aria-hidden','true'); ui.modal.classList.remove('search-modal'); }
+      function searchRecords(query) {
+        var q = query.trim().toLowerCase();
+        if (!q) return [];
+        var result = [];
+        data.projects.forEach(function (p) { if ((p.name + ' ' + p.focus).toLowerCase().indexOf(q) !== -1) result.push({ view:'projects', icon:'folder', type:'Project', title:p.name, detail:p.phase, id:p.id }); });
+        data.literature.forEach(function (p) { if ((p.title + ' ' + p.authors + ' ' + p.source + ' ' + p.tags.join(' ')).toLowerCase().indexOf(q) !== -1) result.push({ view:'literature', icon:'book', type:'Literature', title:p.title, detail:p.authors, id:p.id }); });
+        data.tasks.forEach(function (p) { if ((p.title + ' ' + p.description + ' ' + person(p.owner).name).toLowerCase().indexOf(q) !== -1) result.push({ view:'tasks', icon:'task', type:'Task', title:p.title, detail:person(p.owner).name + ' · ' + p.status, id:p.id }); });
+        data.experiments.forEach(function (p) { if ((p.name + ' ' + p.protocol).toLowerCase().indexOf(q) !== -1) result.push({ view:'experiments', icon:'flask', type:'Experiment', title:p.name, detail:p.status, id:p.id }); });
+        data.findings.forEach(function (p) { if ((p.title + ' ' + p.summary).toLowerCase().indexOf(q) !== -1) result.push({ view:'findings', icon:'spark', type:'Finding', title:p.title, detail:p.category, id:p.id }); });
+        data.members.forEach(function (p) { if ((p.name + ' ' + p.role + ' ' + p.email).toLowerCase().indexOf(q) !== -1) result.push({ view:'team', icon:'team', type:'Teammate', title:p.name, detail:p.role, id:p.id }); });
+        return result.slice(0, 12);
+      }
+      function updateSearchResults(query) {
+        var results = searchRecords(query);
+        var host = document.getElementById('searchResults');
+        if (!host) return;
+        host.innerHTML = results.length ? results.map(function (item) { return '<button class="search-result" type="button" data-action="search-go" data-target-view="' + item.view + '" data-id="' + escapeHtml(item.id) + '">' + '<span class="card-icon">' + icon(item.icon) + '</span><span class="search-result-copy"><strong>' + escapeHtml(item.title) + '</strong><span>' + escapeHtml(item.type + ' · ' + item.detail) + '</span></span>' + icon('arrow') + '</button>'; }).join('') : '<div class="search-empty">No matches yet. Try another keyword or create a record.</div>';
+      }
+      function submitRecord(form) {
+        var entity = form.dataset.entity;
+        var values = Object.fromEntries(new FormData(form).entries());
+        if (entity === 'project') {
+          var newProject = { id: uid('p'), name: values.name.trim(), focus: values.focus.trim(), phase: values.phase, progress: 0, due: values.due, owner: values.owner, archived: false, tone: '#e5ebdf', ink: '#52694f', category: 'NEW PROJECT' };
+          data.projects.unshift(newProject); data.activeProjectId = newProject.id;
+          saveActivity('project','Created a project',newProject.name,newProject.id,'m-maya');
+        } else if (entity === 'literature') {
+          data.literature.unshift({ id:uid('l'), title:values.title.trim(), authors:values.authors.trim(), source:values.source.trim(), year:values.year, projectId:values.projectId, status:values.status, tags:['New record'], saved:false });
+          saveActivity('literature','Added a literature record',values.title.trim(),values.projectId,'m-maya');
+        } else if (entity === 'task') {
+          data.tasks.unshift({ id:uid('t'), title:values.title.trim(), description:values.description.trim() || 'No additional details yet.', projectId:values.projectId, owner:values.owner, due:values.due, priority:values.priority, status:values.status });
+          saveActivity('task','Created a team task',values.title.trim(),values.projectId,'m-maya');
+        } else if (entity === 'experiment') {
+          data.experiments.unshift({ id:uid('e'), name:values.name.trim(), projectId:values.projectId, owner:values.owner, status:values.status, participants:values.participants.trim(), protocol:values.protocol.trim(), updated:'Just now' });
+          saveActivity('experiment','Logged an experiment',values.name.trim(),values.projectId,'m-maya');
+        } else if (entity === 'finding') {
+          data.findings.unshift({ id:uid('f'), title:values.title.trim(), summary:values.summary.trim(), projectId:values.projectId, category:values.category, author:'m-maya', date:dateInput(0), accent:'#7ea285' });
+          saveActivity('finding','Captured a finding',values.title.trim(),values.projectId,'m-maya');
+        } else if (entity === 'member') {
+          var initials = values.name.trim().split(/\s+/).slice(0,2).map(function (x) { return x.charAt(0).toUpperCase(); }).join('');
+          data.members.push({ id:uid('m'), name:values.name.trim(), initials:initials || 'TM', role:values.role.trim(), email:values.email.trim(), avatar:['a2','a3','a4','a5'][data.members.length % 4] });
+          saveActivity('project','Added a collaborator',values.name.trim(),data.activeProjectId,'m-maya');
+        }
+        persist(); closeModal(); setView(currentView); showToast(entity === 'member' ? 'Teammate added to this browser workspace.' : 'Saved to your research workspace.');
+      }
+      function toggleTask(id) {
+        var item = data.tasks.find(function (task) { return task.id === id; });
+        if (!item) return;
+        item.status = item.status === 'done' ? 'todo' : 'done';
+        saveActivity('task',item.status === 'done' ? 'Completed a project task' : 'Reopened a project task',item.title,item.projectId,item.owner);
+        persist(); setView(currentView); showToast(item.status === 'done' ? 'Task marked complete.' : 'Task reopened.');
+      }
+      function copyText(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { showToast('Finding copied to clipboard.'); }).catch(function () { showToast('Copy was unavailable in this browser.'); });
+        else showToast('Clipboard access is unavailable for this local file.');
+      }
+      function exportData() {
+        var blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement('a'); link.href = url; link.download = 'morrow-research-workspace.json'; link.click();
+        window.setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+        closePopover(); showToast('Workspace data exported as JSON.');
+      }
+      function refreshFilterRegion() {
+        var selectors = { literature:'.table-shell tbody', tasks:'.task-columns', experiments:'.experiment-grid', findings:'.finding-grid' };
+        var selector = selectors[currentView];
+        if (!selector) return;
+        var parsed = document.createElement('div');
+        parsed.innerHTML = renderers[currentView]();
+        var current = ui.view.querySelector(selector);
+        var next = parsed.querySelector(selector);
+        if (current && next) current.replaceWith(next);
+      }
+      function handleAction(button) {
+        var action = button.dataset.action;
+        if (button.dataset.view) { setView(button.dataset.view); return; }
+        if (action === 'compose') { closePopover(); composeForm(button.dataset.entity); return; }
+        if (action === 'create-menu') {
+          if (!ui.popover.hidden) { closePopover(); return; }
+          var rect = button.getBoundingClientRect();
+          openPopover(composeMenuHtml());
+          var panel = ui.popover.querySelector('.popover-panel');
+          panel.style.top = Math.round(rect.bottom + 9) + 'px';
+          panel.style.right = Math.max(12,window.innerWidth - rect.right) + 'px';
+          button.setAttribute('aria-expanded','true');
+          return;
+        }
+        if (action === 'workspace-menu') {
+          if (!ui.popover.hidden) { closePopover(); return; }
+          var workspaceRect = button.getBoundingClientRect();
+          openPopover(workspaceMenuHtml());
+          var workspacePanel = ui.popover.querySelector('.popover-panel');
+          workspacePanel.style.top = Math.round(workspaceRect.bottom + 8) + 'px';
+          workspacePanel.style.left = Math.max(10,Math.round(workspaceRect.left)) + 'px';
+          button.setAttribute('aria-expanded','true');
+          return;
+        }
+        if (action === 'switch-project') { data.activeProjectId = button.dataset.id; persist(); closePopover(); setView(currentView); showToast('Project focus updated.'); return; }
+        if (action === 'profile-menu') { if (!ui.popover.hidden) closePopover(); else { openPopover(profileMenuHtml()); button.setAttribute('aria-expanded','true'); } return; }
+        if (action === 'notifications') { if (!ui.popover.hidden) closePopover(); else { openPopover(activityPopoverHtml()); button.setAttribute('aria-expanded','true'); } return; }
+        if (action === 'open-search') { closePopover(); openSearch(); return; }
+        if (action === 'close-modal') { closeModal(); return; }
+        if (action === 'toggle-sidebar') { var sidebarOpen = !ui.sidebar.classList.contains('is-open'); ui.sidebar.classList.toggle('is-open',sidebarOpen); ui.scrim.classList.toggle('is-visible',sidebarOpen); button.setAttribute('aria-expanded',String(sidebarOpen)); button.setAttribute('aria-label',sidebarOpen ? 'Close navigation' : 'Open navigation'); return; }
+        if (action === 'close-sidebar') { ui.sidebar.classList.remove('is-open'); ui.scrim.classList.remove('is-visible'); var menuButton = document.querySelector('.menu-toggle'); if (menuButton) { menuButton.setAttribute('aria-expanded','false'); menuButton.setAttribute('aria-label','Open navigation'); } return; }
+        if (action === 'export') { exportData(); return; }
+        if (action === 'reset') {
+          if (window.confirm('Restore the original sample workspace? Local changes in this browser will be replaced.')) { data = clone(seed); data.extras = clone(toolSeed); persist(); closePopover(); setView('overview'); showToast('Sample workspace restored.'); }
+          return;
+        }
+        if (action === 'select-project') { data.activeProjectId = button.dataset.id; persist(); setView('projects'); return; }
+        if (action === 'toggle-task') { toggleTask(button.dataset.id); return; }
+        if (action === 'toggle-saved') {
+          var paper = data.literature.find(function (x) { return x.id === button.dataset.id; });
+          if (paper) { paper.saved = !paper.saved; persist(); setView('literature'); showToast(paper.saved ? 'Paper saved for later.' : 'Paper removed from saved.'); }
+          return;
+        }
+        if (action === 'filter') { activeFilter = button.dataset.filter; setView(currentView); return; }
+        if (action === 'edit-experiment-status') {
+          var exp = data.experiments.find(function (x) { return x.id === button.dataset.id; });
+          if (!exp) return;
+          var states = ['Planning','Running','Analyzing','Complete'];
+          exp.status = states[(states.indexOf(exp.status) + 1) % states.length];
+          exp.updated = 'Just now'; saveActivity('experiment','Updated experiment status',exp.name + ' · ' + exp.status,exp.projectId,exp.owner); persist(); setView('experiments'); showToast('Experiment moved to ' + exp.status.toLowerCase() + '.'); return;
+        }
+        if (action === 'copy-finding') {
+          var finding = data.findings.find(function (x) { return x.id === button.dataset.id; });
+          if (finding) copyText(finding.title + '\n' + finding.summary);
+          return;
+        }
+        if (action === 'search-go') { var title = button.querySelector('strong').textContent; closeModal(); setView(button.dataset.targetView); showToast('Opened ' + title + '.'); return; }
+      }
+      document.addEventListener('click', function (event) {
+        var button = event.target.closest('button,[data-view],[data-view-link],[data-action]');
+        if (button) {
+          if (button.dataset.viewLink) { event.preventDefault(); setView(button.dataset.viewLink); return; }
+          if (button.dataset.view) { event.preventDefault(); setView(button.dataset.view); return; }
+          if (button.dataset.action) { handleAction(button); return; }
+          if (button.dataset.action === 'select-project') { handleAction(button); return; }
+        }
+        var card = event.target.closest('[data-action="select-project"]');
+        if (card) handleAction(card);
+        if (event.target === ui.modal) closeModal();
+        if (!event.target.closest('#popoverRoot') && !event.target.closest('[data-action="create-menu"],[data-action="workspace-menu"],[data-action="profile-menu"],[data-action="notifications"]')) closePopover();
+      });
+      document.addEventListener('submit', function (event) {
+        if (event.target && event.target.id === 'recordForm') { event.preventDefault(); if (event.target.reportValidity()) submitRecord(event.target); }
+      });
+      document.addEventListener('input', function (event) {
+        if (event.target && event.target.id === 'globalSearch') updateSearchResults(event.target.value);
+        if (event.target && (event.target.id === 'literatureSearch' || event.target.id === 'taskSearch' || event.target.id === 'experimentSearch' || event.target.id === 'findingSearch')) { tableQuery = event.target.value; refreshFilterRegion(); }
+      });
+      document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') { closeModal(); closePopover(); ui.sidebar.classList.remove('is-open'); ui.scrim.classList.remove('is-visible'); var menuButton = document.querySelector('.menu-toggle'); if (menuButton) { menuButton.setAttribute('aria-expanded','false'); menuButton.setAttribute('aria-label','Open navigation'); } }
+        if ((event.key === 'Enter' || event.key === ' ') && event.target.matches('[data-action="select-project"][role="button"]')) { event.preventDefault(); handleAction(event.target); }
+        if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') { event.preventDefault(); openSearch(); }
+        if (!event.metaKey && !event.ctrlKey && event.key === '/' && !/input|textarea|select/i.test(document.activeElement.tagName)) { event.preventDefault(); openSearch(); }
+      });
+      var toolSeed = {
+        questions: [
+          { id:'q-1', title:'How does sleep quality shape memory formation?', hypothesis:'Full-night sleep may support stronger recall than restricted sleep.', objective:'Compare recall scores across sleep conditions.', projectId:'p-sleep', owner:'m-maya' },
+          { id:'q-2', title:'How does language context affect attention?', hypothesis:'Task-switching cost may change with the language cue.', objective:'Compare accuracy and response time across cue conditions.', projectId:'p-language', owner:'m-lena' }
+        ],
+        datasets: [{ id:'d-1', name:'Overnight recall pilot sample', projectId:'p-sleep', collected:dateInput(-10), owner:'m-noor', description:'Example record for the pilot cohort and participant measurements.', link:'', version:'v1.0', access:'Team only' }],
+        notes: [{ id:'n-1', title:'Slow-wave activity and memory', projectId:'p-sleep', citation:'Chen & Patel · Neuroscience Review · 2023', doi:'Add verified DOI or source link', note:'Review how slow-wave activity relates to next-day learning before finalizing the analysis plan.' }],
+        ethics: [
+          { id:'eth-1', projectId:'p-sleep', title:'Ethics approval confirmed', note:'Add the committee name or approval reference.', done:true },
+          { id:'eth-2', projectId:'p-sleep', title:'Participant consent prepared', note:'Check that the consent form is ready for review.', done:true },
+          { id:'eth-3', projectId:'p-sleep', title:'Privacy and data storage plan', note:'Describe how participant information will be protected.', done:false },
+          { id:'eth-4', projectId:'p-sleep', title:'Study registration recorded', note:'Add a preregistration link if the study uses one.', done:false }
+        ],
+        risks: [{ id:'r-1', projectId:'p-sleep', title:'Recruitment may take longer than planned', impact:'Medium', owner:'m-noor', nextStep:'Review the weekly recruitment count with the study team.', status:'Open' }],
+        results: [{ id:'res-1', projectId:'p-sleep', experiment:'Overnight recall study', measure:'Pilot recall score', value:'Example: 8.4 / 10', note:'Sample entry only. Replace with a verified result.' }],
+        milestones: [{ id:'ms-1', projectId:'p-sleep', title:'Pilot analysis checkpoint', date:dateInput(5), owner:'m-lena' }],
+        comments: [{ id:'c-1', projectId:'p-sleep', owner:'m-maya', message:'Please add the final cohort criteria before recruitment begins.', at:new Date().toISOString() }],
+        history: [], templates: []
+      };
+      data.extras = Object.assign({},clone(toolSeed),data.extras || {});
+      Object.keys(toolSeed).forEach(function (key) { if (!Array.isArray(data.extras[key])) data.extras[key] = clone(toolSeed[key]); });
+      if (!data.extras.history.length) data.extras.history = data.activity.slice(0,8).map(function (x) { return { id:x.id,title:x.title,detail:x.detail,projectId:x.projectId,by:x.by,at:'',time:x.time }; });
+      data.projects.forEach(function (x) { if (typeof x.archived === 'undefined') x.archived = false; });
+      var activeToolTab = 'questions';
+      var toolTabs = [['questions','Questions'],['datasets','Datasets'],['notes','Notes & citations'],['ethics','Ethics'],['risks','Risks & blockers'],['results','Experiment results'],['calendar','Calendar'],['discussion','Comments'],['history','Change history'],['templates','Templates'],['archive','Archive']];
+      function toolInput(label,name,type,placeholder,required) { return '<label class="tool-field">' + escapeHtml(label) + '<input name="' + name + '" type="' + (type || 'text') + '" placeholder="' + escapeHtml(placeholder || '') + '"' + (required ? ' required' : '') + '></label>'; }
+      function toolArea(label,name,placeholder,required) { return '<label class="tool-field full">' + escapeHtml(label) + '<textarea name="' + name + '" placeholder="' + escapeHtml(placeholder || '') + '"' + (required ? ' required' : '') + '></textarea></label>'; }
+      function toolSelect(label,name,options) { return '<label class="tool-field">' + escapeHtml(label) + '<select name="' + name + '" required>' + options.map(function (x) { return '<option value="' + escapeHtml(x[0]) + '">' + escapeHtml(x[1]) + '</option>'; }).join('') + '</select></label>'; }
+      function toolProjectSelect() { return '<label class="tool-field">Project<select name="projectId" required>' + data.projects.filter(function (x) { return !x.archived; }).map(function (x) { return '<option value="' + escapeHtml(x.id) + '"' + (x.id === data.activeProjectId ? ' selected' : '') + '>' + escapeHtml(x.name) + '</option>'; }).join('') + '</select></label>'; }
+      function toolOwnerSelect() { return '<label class="tool-field">Owner<select name="owner" required>' + data.members.map(function (x) { return '<option value="' + escapeHtml(x.id) + '">' + escapeHtml(x.name) + '</option>'; }).join('') + '</select></label>'; }
+      function toolForm(type,title,intro,fields,button) { return '<form class="card panel tool-form" data-tool-form="' + type + '"><div><h3>' + escapeHtml(title) + '</h3><p>' + escapeHtml(intro) + '</p></div><div class="tool-form-grid">' + fields.join('') + '</div><button class="button button-primary" type="submit">' + icon('plus') + escapeHtml(button) + '</button></form>'; }
+      function toolProjectName(id) { return project(id).name; }
+      function toolCard(title,detail,meta,chip,actions) { return '<article class="tool-record"><div class="tool-record-top"><h3>' + escapeHtml(title) + '</h3>' + (chip ? '<span class="tool-chip">' + escapeHtml(chip) + '</span>' : '') + '</div><p>' + escapeHtml(detail || '') + '</p><small>' + escapeHtml(meta || '') + '</small>' + (actions ? '<div class="tool-record-actions">' + actions + '</div>' : '') + '</article>'; }
+      function toolEmpty(text) { return '<div class="tool-empty">' + escapeHtml(text) + '</div>'; }
+      function toolSection(title,items) { return '<div class="tool-card-stack"><h2 style="margin:2px 0 0;font:500 22px var(--serif)">' + escapeHtml(title) + '</h2>' + (items || toolEmpty('Nothing has been added here yet.')) + '</div>'; }
+      function renderToolTabs() { return '<div class="tool-tabs" role="tablist" aria-label="Research tools">' + toolTabs.map(function (x) { return '<button class="tool-tab" type="button" role="tab" aria-selected="' + (x[0] === activeToolTab) + '" data-tool-tab="' + x[0] + '">' + escapeHtml(x[1]) + '</button>'; }).join('') + '</div>'; }
+      function renderResearchTools() {
+        var stats = [['Questions',data.extras.questions.length],['Datasets',data.extras.datasets.length],['Open risks',data.extras.risks.filter(function (x) { return x.status !== 'Resolved'; }).length],['Upcoming milestones',data.extras.milestones.length]];
+        return '<div class="view-root">' + pageHeading('PROJECT PLANNING','Research tools','Plan the study, organize its records, and keep decisions visible.','<button class="button button-secondary" type="button" data-tool-action="report">' + icon('download') + 'Download summary</button>') +
+          '<div class="tools-notice">' + icon('alert') + '<div><strong>Saved in this browser</strong>Demo changes stay on this device. Live sharing needs a shared database and secure sign-in.</div></div>' +
+          '<div class="tool-summary">' + stats.map(function (x) { return '<div class="tool-summary-card"><strong>' + x[1] + '</strong><span>' + escapeHtml(x[0]) + '</span></div>'; }).join('') + '</div>' + renderToolTabs() + '<div id="toolPanel">' + renderToolPanel(activeToolTab) + '</div></div>';
+      }
+      function renderToolPanel(tab) {
+        var e=data.extras,form='',rows='',items=[];
+        if (tab==='questions') {
+          form=toolForm('question','Research question','Record the question, hypothesis, and purpose.',[toolInput('Main question','title','text','What will the study answer?',true),toolProjectSelect(),toolArea('Hypothesis','hypothesis','What do you expect to find?',false),toolArea('Objective','objective','What will the team measure or learn?',true),toolOwnerSelect()],'Save question');
+          items=e.questions.map(function(x){return toolCard(x.title,'Hypothesis: '+(x.hypothesis||'Not added')+' Objective: '+(x.objective||'Not added'),toolProjectName(x.projectId)+' · '+person(x.owner).name,'Research question');});
+          rows=toolSection('Questions and hypotheses',items.join(''));
+        } else if (tab==='datasets') {
+          form=toolForm('dataset','Add a dataset record','Save a link and notes. Files are not uploaded in this local demo.',[toolInput('Dataset name','name','text','e.g. Sleep study cohort',true),toolProjectSelect(),toolInput('Version','version','text','v1.0',true),toolInput('Collection date','collected','date','',true),toolOwnerSelect(),toolInput('Dataset link','link','url','https://...',false),toolSelect('Access','access',[['Team only','Team only'],['Restricted','Restricted'],['Public','Public']]),toolArea('Description','description','What does this dataset contain?',true)],'Save dataset');
+          items=e.datasets.map(function(x){return toolCard(x.name,x.description,toolProjectName(x.projectId)+' · '+(x.version||'No version')+' · Collected '+dateLabel(x.collected,true)+' · '+person(x.owner).name+(x.link?' · '+x.link:''),x.access);});
+          rows='<input class="tool-search" id="datasetSearch" type="search" placeholder="Filter datasets..." aria-label="Filter datasets">'+toolSection('Dataset library',items.join(''));
+        } else if (tab==='notes') {
+          form=toolForm('note','Save a reading note','Keep the citation and your key idea together.',[toolInput('Note title','title','text','What is this note about?',true),toolProjectSelect(),toolInput('Citation','citation','text','Author · Journal · Year',true),toolInput('DOI or source link','doi','text','DOI or URL',false),toolArea('Reading note','note','Main idea, evidence, or limitation',true)],'Save note');
+          items=e.notes.map(function(x){return toolCard(x.title,x.note,x.citation+(x.doi?' · '+x.doi:'')+' · '+toolProjectName(x.projectId),'Reading note');});
+          rows=toolSection('Reading notes',items.join(''));
+        } else if (tab==='ethics') {
+          items=e.ethics.map(function(x){return '<label class="ethics-row"><input type="checkbox" data-ethics-id="'+escapeHtml(x.id)+'"'+(x.done?' checked':'')+'><span><strong>'+escapeHtml(x.title)+'</strong><small>'+escapeHtml(x.note)+' · '+escapeHtml(toolProjectName(x.projectId))+'</small></span></label>';});
+          form=toolForm('ethics','Add a checklist item','Add a project-specific reminder.',[toolInput('Checklist item','title','text','e.g. Confirm data retention period',true),toolProjectSelect(),toolArea('Helpful note','note','What should the team check?',false)],'Add checklist item');
+          rows='<section class="card panel"><h3 style="margin:0 0 12px;font:500 22px var(--serif)">Ethics and privacy checklist</h3><p style="margin:0 0 14px;color:var(--muted);font-size:13px">A planning aid, not formal approval.</p><div class="ethics-list">'+(items.join('')||toolEmpty('No checks added.'))+'</div></section>';
+        } else if (tab==='risks') {
+          form=toolForm('risk','Record a risk or blocker','Name the issue and agree on a next step.',[toolInput('Risk or blocker','title','text','What could slow the project?',true),toolProjectSelect(),toolOwnerSelect(),toolSelect('Impact','impact',[['Low','Low'],['Medium','Medium'],['High','High']]),toolArea('Next step','nextStep','How will the team respond?',true)],'Save risk');
+          items=e.risks.map(function(x){return toolCard(x.title,'Next step: '+x.nextStep,toolProjectName(x.projectId)+' · Owner: '+person(x.owner).name,x.status+' · '+x.impact,x.status==='Resolved'?'':'<button class="tool-small-button" type="button" data-resolve-risk="'+escapeHtml(x.id)+'">Mark resolved</button>');});
+          rows=toolSection('Risks and blockers',items.join(''));
+        } else if (tab==='results') {
+          form=toolForm('result','Record an experiment result','Add a measure and label early results clearly.',[toolInput('Experiment','experiment','text','Experiment name',true),toolProjectSelect(),toolInput('Measure','measure','text','e.g. Recall score',true),toolInput('Value','value','text','Result or summary',true),toolArea('Notes and limits','note','Sample size, method, or limitations',false)],'Save result');
+          items=e.results.map(function(x){return toolCard(x.experiment+' · '+x.measure,x.value+(x.note?' — '+x.note:''),toolProjectName(x.projectId),'Record');});
+          rows=toolSection('Experiment results',items.join(''));
+        } else if (tab==='calendar') {
+          form=toolForm('milestone','Add a milestone','Add a dated project checkpoint.',[toolInput('Milestone','title','text','What should happen?',true),toolProjectSelect(),toolInput('Date','date','date','',true),toolOwnerSelect()],'Add milestone');
+          var events=data.tasks.filter(function(x){return x.status!=='done'&&x.due;}).map(function(x){return {date:x.due,title:x.title,detail:toolProjectName(x.projectId)+' · '+person(x.owner).name,type:'Task'};})
+            .concat(data.projects.filter(function(x){return !x.archived&&x.due;}).map(function(x){return {date:x.due,title:x.name,detail:x.phase,type:'Project due'};}))
+            .concat(e.milestones.map(function(x){return {date:x.date,title:x.title,detail:toolProjectName(x.projectId)+' · '+person(x.owner).name,type:'Milestone'};}));
+          events.sort(function(a,b){return a.date.localeCompare(b.date);});
+          rows='<section class="card panel"><h3 style="margin:0 0 8px;font:500 22px var(--serif)">Upcoming work</h3><div class="calendar-list">'+(events.length?events.map(function(x){return '<div class="calendar-row"><span class="calendar-date">'+escapeHtml(dateLabel(x.date,true))+'</span><i class="calendar-dot"></i><span><strong>'+escapeHtml(x.title)+'</strong><small>'+escapeHtml(x.detail)+'</small></span><span class="tool-chip">'+escapeHtml(x.type)+'</span></div>';}).join(''):toolEmpty('No upcoming dates.'))+'</div></section>';
+        } else if (tab==='discussion') {
+          form=toolForm('comment','Add a project comment','Ask a question or leave an update for the team.',[toolProjectSelect(),toolOwnerSelect(),toolArea('Comment','message','Write a helpful project update...',true)],'Post comment');
+          items=e.comments.map(function(x){return toolCard(person(x.owner).name+' · '+dateLabel((x.at||'').slice(0,10),true),x.message,toolProjectName(x.projectId),'Team comment');});
+          rows=toolSection('Project discussion',items.join(''));
+        } else if (tab==='history') {
+          items=e.history.slice().sort(function(a,b){return String(b.at||'').localeCompare(String(a.at||''));}).map(function(x){return toolCard(x.title,x.detail,(x.at?new Date(x.at).toLocaleString():x.time||'Earlier')+' · '+person(x.by).name,'Activity');});
+          rows=toolSection('Workspace change history',items.join(''));
+        } else if (tab==='templates') {
+          var templates=[{name:'Literature review',focus:'What does existing research tell us about this question?',phase:'Literature review',tone:'#e2ecdf',ink:'#456b50'},{name:'Field study',focus:'What can we learn by collecting observations in the field?',phase:'Protocol design',tone:'#e3eaf1',ink:'#4c637d'},{name:'Lab experiment',focus:'How does a controlled change affect the measured outcome?',phase:'Protocol design',tone:'#f1e8d9',ink:'#8b6840'}];
+          rows='<div class="tool-card-stack"><h2 style="margin:2px 0 0;font:500 22px var(--serif)">Start from a template</h2><p style="margin:0;color:var(--muted);font-size:13px">Choose a starting point. You can edit project details later.</p>'+templates.map(function(x,i){return toolCard(x.name,x.focus,'Creates a project with a useful starting phase.','Template','<button class="tool-small-button" type="button" data-use-template="'+i+'">Use template</button>');}).join('')+'</div>';
+        } else if (tab==='archive') {
+          var active=data.projects.filter(function(x){return !x.archived;}), archived=data.projects.filter(function(x){return x.archived;});
+          rows='<section class="card panel"><h3 style="margin:0 0 12px;font:500 22px var(--serif)">Active projects</h3><div class="tool-card-stack">'+(active.map(function(x){return toolCard(x.name,x.focus,'Progress: '+x.progress+'% · '+x.phase,'Active','<button class="tool-small-button" type="button" data-archive-project="'+escapeHtml(x.id)+'">Archive project</button>');}).join('')||toolEmpty('No active projects.'))+'</div><h3 style="margin:22px 0 12px;font:500 22px var(--serif)">Archived projects</h3><div class="tool-card-stack">'+(archived.map(function(x){return toolCard(x.name,x.focus,'Archived · '+x.phase,'Archived','<button class="tool-small-button" type="button" data-restore-project="'+escapeHtml(x.id)+'">Restore project</button>');}).join('')||toolEmpty('No archived projects.'))+'</div></section>';
+        }
+        return '<div class="tools-columns">'+form+rows+'</div>';
+      }
+      function downloadToolReport() {
+        var e=data.extras;
+        var report=['MORROW RESEARCH WORKSPACE SUMMARY','Generated: '+new Date().toLocaleString(),'',
+          'PROJECTS',data.projects.map(function(x){return '- '+x.name+(x.archived?' (archived)':'')+' — '+x.phase+', '+x.progress+'%';}).join('\n'),'',
+          'RESEARCH QUESTIONS',e.questions.map(function(x){return '- '+x.title+' | Hypothesis: '+x.hypothesis;}).join('\n'),'',
+          'DATASETS',e.datasets.map(function(x){return '- '+x.name+' | '+x.version+' | '+x.access+' | '+x.collected+' | '+person(x.owner).name;}).join('\n'),'',
+          'TASKS',data.tasks.map(function(x){return '- '+x.title+' | '+x.status+' | due '+x.due;}).join('\n'),'',
+          'EXPERIMENTS',data.experiments.map(function(x){return '- '+x.name+' | '+x.status+' | '+x.participants;}).join('\n'),'',
+          'FINDINGS',data.findings.map(function(x){return '- '+x.title+' — '+x.summary;}).join('\n'),'',
+          'RISKS',e.risks.map(function(x){return '- '+x.title+' | '+x.status+' | next step: '+x.nextStep;}).join('\n')].join('\n');
+        var blob=new Blob([report],{type:'text/plain;charset=utf-8'}),url=URL.createObjectURL(blob),link=document.createElement('a');
+        link.href=url;link.download='morrow-research-summary.txt';link.click();window.setTimeout(function(){URL.revokeObjectURL(url);},1000);showToast('Project summary downloaded.');
+      }
+      function saveToolRecord(form) {
+        var v=Object.fromEntries(new FormData(form).entries()),e=data.extras,type=form.dataset.toolForm,id=uid('x');
+        if(type==='question')e.questions.unshift({id:id,title:v.title.trim(),hypothesis:v.hypothesis.trim(),objective:v.objective.trim(),projectId:v.projectId,owner:v.owner});
+        if(type==='dataset')e.datasets.unshift({id:id,name:v.name.trim(),projectId:v.projectId,description:v.description.trim(),link:v.link.trim(),version:v.version.trim(),collected:v.collected,owner:v.owner,access:v.access});
+        if(type==='note')e.notes.unshift({id:id,title:v.title.trim(),projectId:v.projectId,citation:v.citation.trim(),doi:v.doi.trim(),note:v.note.trim()});
+        if(type==='ethics')e.ethics.unshift({id:id,projectId:v.projectId,title:v.title.trim(),note:v.note.trim(),done:false});
+        if(type==='risk')e.risks.unshift({id:id,projectId:v.projectId,title:v.title.trim(),impact:v.impact,owner:v.owner,nextStep:v.nextStep.trim(),status:'Open'});
+        if(type==='result')e.results.unshift({id:id,projectId:v.projectId,experiment:v.experiment.trim(),measure:v.measure.trim(),value:v.value.trim(),note:v.note.trim()});
+        if(type==='milestone')e.milestones.unshift({id:id,projectId:v.projectId,title:v.title.trim(),date:v.date,owner:v.owner});
+        if(type==='comment')e.comments.unshift({id:id,projectId:v.projectId,owner:v.owner,message:v.message.trim(),at:new Date().toISOString()});
+        saveActivity('project','Added '+type,v.title||v.name||v.experiment||v.message,v.projectId,v.owner);setView('researchTools');showToast('Saved in this browser workspace.');
+      }
+      document.addEventListener('click',function(event){
+        var tab=event.target.closest('[data-tool-tab]');
+        if(tab){activeToolTab=tab.dataset.toolTab;document.querySelectorAll('[data-tool-tab]').forEach(function(x){x.setAttribute('aria-selected',String(x===tab));});var panel=document.getElementById('toolPanel');if(panel)panel.innerHTML=renderToolPanel(activeToolTab);return;}
+        var button=event.target.closest('[data-tool-action],[data-archive-project],[data-restore-project],[data-resolve-risk],[data-use-template]');
+        if(!button)return;
+        if(button.dataset.toolAction==='report'){downloadToolReport();return;}
+        if(button.dataset.archiveProject){
+          if(data.projects.filter(function(x){return !x.archived;}).length<=1){showToast('Keep at least one project active.');return;}
+          var old=data.projects.find(function(x){return x.id===button.dataset.archiveProject;});
+          if(old){old.archived=true;if(data.activeProjectId===old.id)data.activeProjectId=data.projects.find(function(x){return !x.archived;}).id;saveActivity('project','Archived a project',old.name,old.id,'m-maya');setView('researchTools');showToast('Project moved to the archive.');}return;
+        }
+        if(button.dataset.restoreProject){var restored=data.projects.find(function(x){return x.id===button.dataset.restoreProject;});if(restored){restored.archived=false;saveActivity('project','Restored a project',restored.name,restored.id,'m-maya');setView('researchTools');showToast('Project restored.');}return;}
+        if(button.dataset.resolveRisk){var risk=data.extras.risks.find(function(x){return x.id===button.dataset.resolveRisk;});if(risk){risk.status='Resolved';saveActivity('project','Resolved a project risk',risk.title,risk.projectId,'m-maya');setView('researchTools');showToast('Risk marked resolved.');}return;}
+        if(button.dataset.useTemplate!==undefined){
+          var templates=[{name:'Literature review',focus:'What does existing research tell us about this question?',phase:'Literature review',tone:'#e2ecdf',ink:'#456b50'},{name:'Field study',focus:'What can we learn by collecting observations in the field?',phase:'Protocol design',tone:'#e3eaf1',ink:'#4c637d'},{name:'Lab experiment',focus:'How does a controlled change affect the measured outcome?',phase:'Protocol design',tone:'#f1e8d9',ink:'#8b6840'}],t=templates[Number(button.dataset.useTemplate)];
+          if(t){var p={id:uid('p'),name:t.name,focus:t.focus,phase:t.phase,progress:0,due:dateInput(30),owner:'m-maya',archived:false,tone:t.tone,ink:t.ink,category:'RESEARCH TEMPLATE'};data.projects.unshift(p);data.activeProjectId=p.id;saveActivity('project','Started from a project template',p.name,p.id,'m-maya');setView('projects');showToast('New project created from template.');}
+        }
+      });
+      document.addEventListener('change',function(event){
+        var box=event.target.closest('[data-ethics-id]');
+        if(box){var item=data.extras.ethics.find(function(x){return x.id===box.dataset.ethicsId;});if(item){item.done=box.checked;saveActivity('project',box.checked?'Completed an ethics check':'Reopened an ethics check',item.title,item.projectId,'m-maya');setView('researchTools');}}
+      });
+      document.addEventListener('input',function(event){ if(event.target.id==='datasetSearch'){ var q=event.target.value.toLowerCase(); document.querySelectorAll('#toolPanel .tool-record').forEach(function(card){card.hidden=card.textContent.toLowerCase().indexOf(q)===-1;}); } });
+      document.addEventListener('submit',function(event){
+        var form=event.target.closest('form[data-tool-form]');
+        if(form){event.preventDefault();if(form.reportValidity())saveToolRecord(form);}
+      });
+
+      updateCounts();
+      setView('overview');
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var screen = document.getElementById('loginScreen');
+      var form = document.getElementById('loginForm');
+      var message = document.getElementById('loginMessage');
+      var password = document.getElementById('loginPassword');
+      var toggle = document.getElementById('showPassword');
+      function hasAccess() {
+        try { return sessionStorage.getItem('morrowDemoAccess') === 'yes' || localStorage.getItem('morrowDemoRemember') === 'yes'; }
+        catch (error) { return false; }
+      }
+      function enterWorkspace() {
+        document.body.classList.remove('auth-locked');
+        screen.classList.add('is-leaving');
+        window.setTimeout(function () {
+          screen.hidden = true;
+          screen.classList.remove('is-leaving');
+          document.getElementById('viewWrap').focus();
+        }, 340);
+      }
+      function saveAccess() {
+        try {
+          if (document.getElementById('rememberMe').checked) {
+            localStorage.setItem('morrowDemoRemember','yes');
+            sessionStorage.removeItem('morrowDemoAccess');
+          } else {
+            sessionStorage.setItem('morrowDemoAccess','yes');
+            localStorage.removeItem('morrowDemoRemember');
+          }
+        } catch (error) {}
+        enterWorkspace();
+      }
+      if (hasAccess()) { document.body.classList.remove('auth-locked'); screen.hidden = true; }
+      toggle.addEventListener('click',function () {
+        var visible = password.type === 'password';
+        password.type = visible ? 'text' : 'password';
+        toggle.textContent = visible ? 'Hide' : 'Show';
+        toggle.setAttribute('aria-label',visible ? 'Hide password' : 'Show password');
+      });
+      document.getElementById('forgotPassword').addEventListener('click',function () {
+        message.textContent = 'This demo has no password reset service. Use any valid email and a password with at least 6 characters.';
+      });
+      document.getElementById('demoLogin').addEventListener('click',function () {
+        message.textContent = 'Opening the sample research workspace…';
+        saveAccess();
+      });
+      form.addEventListener('submit',function (event) {
+        event.preventDefault();
+        if (!form.reportValidity()) return;
+        message.textContent = 'Welcome back. Opening your research workspace…';
+        saveAccess();
+      });
+    })();
+  </script>
+
+
+
+
+
+</body><div id="codex-browser-sidebar-comments-root" style="position: fixed; inset: 0px; pointer-events: none; z-index: 2147483647;"></div></html>
